@@ -1,0 +1,73 @@
+////
+  Copyright 2021 The Bank of New York Mellon.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+////
+= Spring Framework Tutorial
+:toc:
+:toclevels: 4
+
+Welcome to the Spring tutorial!
+
+== What this tutorial is for
+
+This tutorial will cover:
+
+* the basics of Spring Inversion of Control and Dependency Injection
+
+* testing with Spring is covered
+
+* accessing databases with Spring
+
+* profiles in Spring
+
+== How to setup the project
+
+The project can be loaded into an IDE as a single structure.
+
+=== Project pre-requisites
+
+1. JDK 11
+2. A modern IDE (IntelliJ IDEA or Eclipse or Netbeans)
+3. Apache Maven v3.6.3 or above
+
+=== Project tree
+
+[source]
+----
+|____pom.xml                                      <----- The root aggregator/reactor POM
+|____assets                                       <----- Assets used in this projects
+| |____images
+| |____docs                                       <----- Documents explaining the content
+|____README.adoc                                  <----- This file
+|____ch01_spring-inversion-of-control             <----- Spring - Inversion of Control
+|____ch02_spring-dependency-injection             <----- Spring - Dependency Injection
+|____ch03_spring-testing                          <----- Spring - Testing
+|____ch04_spring-persistence                      <----- Spring - Persistence
+|____ch05_spring-hibernate                        <----- Spring - Persistence with Hibernate
+|____ch06_spring-jpa                              <----- Spring - Persistence with JPA
+|____ch07_spring-data-jpa                         <----- Spring - Persistence with Spring Data JPA
+|____ch08_spring-rest                             <----- Spring - RESTful API integration
+
+----
+
+== Documents
+A full table of contents for this tutorial:
+
+== Tutorial
+
+[#Tutorial]
+.Spring Framework Tutorial
+[link=assets/docs/TableOfContents.adoc]
+image::../assets/images/starthere.png[Tutorial,200,100]
+

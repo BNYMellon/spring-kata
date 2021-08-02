@@ -1,0 +1,87 @@
+////
+  Copyright 2021 The Bank of New York Mellon.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+////
+= Tutorial Overview
+:toc:
+:toclevels: 4
+
+How the Spring Boot tutorial is split.
+
+== The domain for the chapters
+
+The next few chapters will cover a todo service.
+
+The Todo service creates a RESTful service to Create, Read, Update and Delete todo instances. Each Todo instance has a:
+
+* id: the generated ID of the Todo
+* name: the name of the Todo
+* assignee: who the Todo is assigned to
+* due: a fuzzy due date/time indicator, not really a timestamp or date
+* notes: some description or notes associated with the Todo
+* activeFlag: a flag determining if the Todo is active or "deleted"
+
+'''
+
+== Tutorial Path
+
+The flow of the new few sections:
+
+* *maven* dependencies.
+
+* *model layer* and its unit test cases.
+
+* *dao layer* and its unit test cases.
+
+* *exception layer* and its unit test cases.
+
+* *service layer* and its unit test cases.
+
+* *controller layer* and its unit test cases.
+
+* *documentation* via Swagger docs, success and exception response handling.
+
+* *integration* via REST layer unit tests, Postman and Swagger.
+
+'''
+
+== Recommended package hierarchy for layers
+
+It is important to layer out a spring application properly to easily test and refactor code.
+
+The recommended approach for package hierarchy from any application / user using the Spring Boot application:
+
+[source]
+----
+(controller or api) ⇛ service ⇛ (dao or repository) + model + config.
+----
+
+The logical way to code these layers will thus take a reverse approach:
+
+* Code and unit-test the model layer.
+* Code and unit-test the dao or repository layer.
+* Code and unit-test the service layer.
+* Code and unit-test the controller or api layer.
+* Code the config layer as needed by each of the above.
+
+'''
+
+[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+|===
+| Prev | TOC | Next
+
+| link:01_HowToCreateANewSpringBootProject.adoc[How to create a new Spring Boot Project]
+| link:TableOfContents.adoc[TOC]
+| link:03_MavenDependencies.adoc[Maven Dependencies used]
+|===

@@ -1,0 +1,386 @@
+////
+  Copyright 2021 The Bank of New York Mellon.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+////
+= Dependency Injection in Spring
+:toc:
+:toclevels: 4
+
+Understanding how Spring "wires" its "beans".
+
+== Spring - Dependency Injection
+
+In Spring, dependencies can be injected by the following popular means:
+
+XML-based container config:: the Java bean is loaded into the spring container registry via a
+configuration XML that "describes" the POJO attributes.
+
+Annotation-based container config:: the Java bean is loaded into the spring container registry via
+stereotype hints annotated on the POJO with values in an external XML file.
+
+Java-based container configuration:: Configuration is completely moved to Java, no need for XML at
+all.
+
+Let us walk through a few examples.
+
+'''
+
+== Java Example without Spring
+
+The previous chapter detailed how Spring loads XML to manage bean configurations. It included a
+basic example of Spring using the default constructor to instantiate a bean.
+
+1. For the model, we have two model objects to look at +
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/model/ColoredShape.java[ColoredShape.java] +
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/model/ColoredShapeHolder.java[ColoredShapeHolder.java]
+
+2. A plain Java example with no spring used +
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/Ex00_NoFrameworkExample.java[Ex00_NoFrameworkExample.java].
+
+3. Several instances of `ColoredShapeHolder` are created in this example.
+
+.Output
+****
+ Running the main method should output
+ > 1 count of colored shape: [ green circle ]
+ > 5 count of colored shape: [ red rectangle ]
+ > 7 count of colored shape: [ cyan cylinder ]
+ > 3 count of colored shape: [ black box ]
+ created with default values on ColoredShape which itself is instantiated with a default
+constructor.
+****
+
+'''
+'''
+
+== Using Spring to achieve Dependency Injection (DI)
+
+=== Using XML based Dependency Injection
+
+We will take a look at how a dependency injection can be configured using an XML file.
+
+==== Example 1 - XML injection - constructor with unique parameter types
+This example demonstrates a loading of a bean with a default constructor call. No custom values
+are set. The XML configuration simply instantiates a bean to be made available to the holder.
+
+1. The Java code to execute +
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/xml/Ex01_DIThroughConstructorSimple.java[Ex01_DIThroughConstructorSimple.java]. +
+This class has a `ClassPathXmlApplicationContext` which reads the XML configuration. The
+`ApplicationContext` is the Spring Inversion of Control. The `main` method transfers control of
+loading beans to the `ClassPathXmlApplicationContext`, which then loads _beans_ from the XML file.
+The XML file provides an injection of a `ColoredShape` _bean_ into a `ColoredShapeHolder` _bean_
+via *_Constructor Injection_* based on *determining the types of arguments*.
+
+2. The Java code for the model loaded from the XML file +
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/model/ColoredShape.java[ColoredShape.java]. +
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/model/ColoredShapeHolder.java[ColoredShapeHolder.java].
+
+3. Here is the XML configuration for this Spring class +
+⇒ link:../../ch02_spring-dependency-injection/src/main/resources/ex01-di-through-constructor-simple.xml[ex01-di-through-constructor-simple.xml].
+
+4. Notice how the two argument constructor from `ColoredShapeHolder` is used to inject the
+`ColoredShape` based on *argument types*. The order, in this case, does not matter, since the
+types accepted by the constructor are unique.
+
+.Output
+****
+ Running the main method should output
+ > 1 count of colored shape: [ green circle ]
+ created with quantity of 1 configured for the bean ColoredShapeHolder.
+****
+
+'''
+
+==== Example 2 - XML injection - constructor using named arguments
+This example demonstrates a loading of a bean with a constructor call passing arguments. The
+arguments represent the parameter names. The XML configuration simply instantiates a bean to be
+made available to the holder and sets constructor values based on the names.
+
+1. The Java code to execute +
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/xml/Ex02_DIThroughConstructorNamed.java[Ex02_DIThroughConstructorNamed.java] +
+This class has a `ClassPathXmlApplicationContext` which reads the XML configuration. The
+`ApplicationContext` is the Spring Inversion of Control. The `main` method transfers control of
+loading beans to the `ClassPathXmlApplicationContext`, which then loads _beans_ from the XML file.
+The XML file provides an injection of a `ColoredShape` _bean_ into a `ColoredShapeHolder` _bean_
+via *_Constructor Injection_* using *constructor argument names*.
+
+2. Here is the XML configuration for this Spring class +
+⇒ link:../../ch02_spring-dependency-injection/src/main/resources/ex02-di-through-constructor-named.xml[ex02-di-through-constructor-named.xml].
+
+3. Notice how the two argument constructor from `ColoredShapeHolder` is used to inject the
+`ColoredShape` based on *argument names*. The order, in this case, does not matter, since the
+argument names are unique.
+
+.Output
+****
+ Running the main method should output
+ > 5 count of colored shape: [ red rectangle ]
+ created with quantity of 5 configured for the bean ColoredShapeHolder.
+****
+
+'''
+
+==== Example 3 - XML injection - constructor using argument index
+This example demonstrates a loading of a bean with a constructor call passing arguments. The
+arguments represent the parameter indices. The XML configuration simply instantiates a
+bean to be made available to the holder.
+
+1. The Java code to execute +
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/xml/Ex03_DIThroughConstructorIndex.java[Ex03_DIThroughConstructorIndex.java] +
+This class has a `ClassPathXmlApplicationContext` which reads the XML configuration. The
+`ApplicationContext` is the Spring Inversion of Control. The `main` method transfers control of
+loading beans to the `ClassPathXmlApplicationContext`, which then loads _beans_ from the XML file.
+The XML file provides an injection of a `ColoredShape` _bean_ into a `ColoredShapeHolder` _bean_
+via *_Constructor Injection_* using *constructor argument indices*.
+
+2. Here is the XML configuration for this Spring class +
+⇒ link:../../ch02_spring-dependency-injection/src/main/resources/ex03-di-through-constructor-index.xml[ex03-di-through-constructor-index.xml].
+
+3. Notice how the two argument constructor from `ColoredShapeHolder` is used to inject the
+`ColoredShape` based on *argument indices*. The order, in this case, does not matter, since the
+argument indices are well-defined.
+
+.Output
+****
+ Running the main method should output
+ > 7 count of colored shape: [ cyan cylinder ]
+ created with quantity of 7 configured for the bean ColoredShapeHolder.
+****
+
+'''
+
+==== Example 4 - XML injection - calling the setter to set property values
+This example demonstrates a loading of a bean with setter calls passing values. The property
+includes a named attribute of each bean property. The XML configuration simply instantiates a bean
+to be made available to the holder.
+
+1. The Java code to execute +
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/xml/Ex04_DIThroughSetters.java[Ex04_DIThroughSetters.java] +
+This class has a `ClassPathXmlApplicationContext` which reads the XML configuration. The
+`ApplicationContext` is the Spring Inversion of Control. The `main` method transfers control of
+loading beans to the `ClassPathXmlApplicationContext`, which then loads _beans_ from the XML file.
+The XML file provides an injection of a `ColoredShape` _bean_ into a `ColoredShapeHolder` _bean_
+via *_Setter Injection_* using *setters*.
+
+2. Here is the XML configuration for this Spring class +
+⇒ link:../../ch02_spring-dependency-injection/src/main/resources/ex04-di-through-setters.xml[ex04-di-through-setters.xml].
+
+3. Notice how the bean is declared with property values being set in both `ColoredShape` which is
+then is used to inject the property in `ColoredShapeHolder` based on *property setters*. The order
+of setting properties, does not matter, since the properties can be set in any order.
+
+.Output
+****
+ Running the main method should output
+ > 3 count of colored shape: [ black box ]
+ created with quantity of 3 configured for the bean ColoredShapeHolder.
+****
+
+'''
+'''
+
+=== Using Annotation based Dependency Injection
+
+The next few examples demonstrate how Java annotations can be used to inject dependencies.
+
+==== Example 5 - Annotation injection - calling the setter to set property values
+This example demonstrates a loading of a bean with setter annotations to wire. The property
+includes a named attribute of each bean property. The XML configuration simply instantiates a bean
+to be made available to the holder. The ColoredShape is NOT passed to the ColoredShapeHolder.
+
+1. The Java code to execute +
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/annotation/Ex05_DIThroughAnnotationSetters.java[Ex05_DIThroughAnnotationSetters.java] +
+This class loads beans via an XML and then invokes a `SetterAnnotatedColoredShapeHolder`.
+
+2. Here is the XML configuration for this Spring class +
+⇒ link:../../ch02_spring-dependency-injection/src/main/resources/ex05-di-through-annotation-setters.xml[ex05-di-through-annotation-setters.xml] +
+The XML only declares two beans, but *does nothing to inject*. Also notice a special instruction
+to the `beans` schema, and the addition of a `<context:annotation-config/>` excerpt. The addition
+of the schemas and the declaration of this excerpt are important to process annotations.
+
+3. The Java Code that injects the dependency +
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/model/SetterAnnotatedColoredShapeHolder.java[SetterAnnotatedColoredShapeHolder.java] +
+This class has an `@Autowired` annotation for the `setColoredShape()`. The XML file defines the
+beans that are loaded via the `ClassPathXmlApplicationContext`. This part creates a registry of
+beans. The `SetterAnnotatedColoredShapeHolder` has the `@Autowired` annotation on the setter,
+which queries the registry to *_find a matching bean_* to set the `ColoredShape`.
+
+.Output
+****
+ Running the main method should output
+ > 11 count of colored shape: [ red rhombus ]
+ created with quantity of 11 configured for the bean ColoredShapeHolder.
+****
+
+'''
+
+==== Example 6 - Annotation injection - calling the constructor to inject values
+This example demonstrates a loading of a bean with constructor annotations to wire. The property
+includes a named attribute of each bean property. The XML configuration simply instantiates a bean
+to be made available to the holder. The ColoredShape is NOT passed to the ColoredShapeHolder.
+
+1. The Java code to execute +
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/annotation/Ex06_DIThroughAnnotationConstructor.java[Ex06_DIThroughAnnotationConstructor.java] +
+This class loads beans via an XML and then invokes a `ConstructorAnnotatedColoredShapeHolder`.
+
+2. Here is the XML configuration for this Spring class +
+⇒ link:../../ch02_spring-dependency-injection/src/main/resources/ex06-di-through-annotation-constructor.xml[ex06-di-through-annotation-constructor.xml] +
+The XML only declares two beans, but *does nothing to inject*. Also notice a special instruction
+to the `beans` schema, and the addition of a `<context:annotation-config/>` excerpt. The addition
+of the schemas and the declaration of this excerpt are important to process annotations.
+
+3. The Java Code that injects the dependency +
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/model/ConstructorAnnotatedColoredShapeHolder.java[ConstructorAnnotatedColoredShapeHolder.java] +
+This class has an `@Autowired` annotation for the constructor. The XML file defines the beans that
+are loaded via the `ClassPathXmlApplicationContext`. This part creates a registry of beans. The
+`ConstructorAnnotatedColoredShapeHolder` has the `@Autowired` annotation on the constructor, which
+queries the registry to *_find a matching bean_* to set the `ColoredShape`.
+
+.Output
+****
+ Running the main method should output
+ > 2 count of colored shape: [ orange oval ]
+ created with quantity of 2 configured for the bean ColoredShapeHolder.
+****
+
+'''
+
+==== Example 7 - Annotation injection - calling the constructor to inject values, with a Qualifier
+This example demonstrates a loading of a bean with constructor annotations to wire. The property
+includes a named attribute of each bean property. The XML configuration simply instantiates a bean
+to be made available to the holder and includes a qualifier. The ColoredShape is NOT passed to
+the ColoredShapeHolder.
+
+1. The Java code to execute +
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/annotation/Ex07_DIThroughAnnotationWithQualifiers.java[Ex07_DIThroughAnnotationWithQualifiers.java] +
+This class loads beans via an XML and then invokes a `ConstructorAnnotatedQualifiedColoredShapeHolder`.
+
+2. Here is the XML configuration for this Spring class +
+⇒ link:../../ch02_spring-dependency-injection/src/main/resources/ex07-di-through-annotation-with-qualifiers.xml[ex07-di-through-annotation-with-qualifiers.xml] +
+The XML only declares three beans, but *does nothing to inject*. There are two `ColoredShape`
+beans, which will lead to a _confusion_ about which bean to load. Notice the new qualifier
+definition for both `ColoredShape` beans. Also notice a special instruction to the `beans` schema,
+and the addition of a `<context:annotation-config/>` excerpt. The addition of the schemas and the
+declaration of this excerpt are important to process annotations.
+
+3. The Java Code that injects the dependency +
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/model/ConstructorAnnotatedQualifiedColoredShapeHolder.java[ConstructorAnnotatedQualifiedColoredShapeHolder.java] +
+This class has an `@Autowired` annotation for the constructor. The Constructor parameter also has
+an annotation of a `Qualifier` which specifies that the bean to load uses the *`thePinkPolygon`*
+bean, and *_not the aColoredShape_*. The XML file defines the beans that are loaded via the
+`ClassPathXmlApplicationContext`. This part creates a registry of beans. The
+`ConstructorAnnotatedColoredShapeHolder` has the `@Autowired` annotation on the constructor,
+which queries the registry to *_find a matching bean_* to set the `ColoredShape`.
+
+.Output
+****
+ Running the main method should output
+ > 4 count of colored shape: [ pink polygon ]
+ created with quantity of 4 configured for the bean ColoredShapeHolder.
+****
+
+'''
+'''
+
+=== Using Java based Dependency Injection
+
+The next few examples demonstrate how Java annotations, _without any XML_, can be used to inject dependencies.
+
+==== Example 8 - Java-only injection - autowiring with a Component Scan
+This example demonstrates a loading of a bean with wiring via component scans. The annotation on
+the main class allows scanning of all classes in the base package specified in the parameter.
+Special annotations that define the behaviour of a class. Spring framework treats such annotated
+classes as first class beans. Any classes marked with a stereotype indicates that the class being a
+bean are picked into the context.
+
+1. The Java code to execute +
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/java/Ex08_DIThroughJava.java[Ex08_DIThroughJava.java] +
+This class has an annotation to `@ComponentScan` all Spring-annotated classes in the
+`bnymellon.training.spring.framework.model` package. This is the Java equivalent of creating bean
+definitions in XML. Notice how the @ComponentScan points to a base package to scan, Spring picks up
+all classes marked as a `@Component` from the base package. Notice the use of an
+`AnnotationConfigApplicationContext` to load the context beans via annotations. Since we do not
+pass any classes, package or configuration location, the annotation context need to be first
+registered and then refreshed to ensure scanning and subsequent loading of all necessary
+Spring-related beans.
+
+2. A few model classes are created that contain the `@Component` annotation informing Spring to
+load them up as beans.
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/model/BlackBox.java[BlackBox.java].
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/model/OrangeOval.java[OrangeOval.java]. +
+Notice there are other `ColoredShape` classes that are *NOT* loaded into the Spring context, since
+they are not marked with the `@Component` annotation. Examples include `CyanCylinder` and
+`RedRectangle`.
+
+3. The Java code that autowires +
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/model/AutowiredColoredShapeHolder.java[AutowiredColoredShapeHolder.java] +
+This class autowires the constructor to look for an instance of `OrangeOval` in the context.
+The AutowiredColoredShapeHolder itself picks up the OrangeOval loaded during the component scan.
+Since only one instance is declared, it is found and auto-wired in.
+
+.Output
+****
+ Running the main method should output
+ > 1 count of colored shape: [ orange oval ]
+ created with quantity of 2 configured for the bean ColoredShapeHolder.
+****
+
+'''
+
+==== Example 9 - Java-only injection - autowiring with a @Configuration bean
+This example demonstrates a loading of a bean with wiring configured in a Java object. The
+annotation on the main class allows scanning of all classes in the base package specified in
+the parameter. Any class marked with @Configuration annotation (this annotation is also called a
+stereotype), indicate that it replaces XML configurations previously discussed.
+
+1. The Java code to execute +
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/java/Ex09_DIThroughJavaConfiguration.java[Ex09_DIThroughJavaConfiguration.java] +
+This class uses the same `AnnotationConfigApplicationContext` as used in the previous example.
+Since the configuration points to a specific Java class, it can skip the need to register and
+refresh. The `ColoredShapeHolder` instance is retrieved by name from the context.
+
+2. The Java code that provides the configurations +
+⇒ link:../../ch02_spring-dependency-injection/src/main/java/bnymellon/training/spring/framework/model/DIConfiguration.java[DIConfiguration.java] +
+This class provides the beans (with their names) of *tealtrapezoid*, *tealTrapezoidHolder* and
+*redRectangleHolder* to be loaded into the Spring context.
+
+.Output
+****
+ Running the main method should output
+ > 10 count of colored shape: [ teal trapezoid ]
+****
+
+'''
+
+== Exercise Lab
+
+image:../../../assets/images/labtime.png[Lab, align="center"]
+
+The lab exercise is to fix the broken tests. Follow the instructions to fix the TODOs to get the
+JUnit test to pass.
+
+⇒ link:../../ch02_spring-dependency-injection/src/test/java/bnymellon/training/spring/framework/xml/Lab01Test.java[xml/Lab01Test.java] +
+⇒ link:../../ch02_spring-dependency-injection/src/test/java/bnymellon/training/spring/framework/annotation/Lab02Test.java[annotation/Lab02Test.java] +
+⇒ link:../../ch02_spring-dependency-injection/src/test/java/bnymellon/training/spring/framework/model[model package]
+
+'''
+
+[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+|===
+| Prev | TOC | Next
+
+| link:01_InversionOfControl.adoc[Inversion of Control]
+| link:TableOfContents.adoc[TOC]
+| link:02_SpringBasicsSummary.adoc[IoC and DI - Summary]
+|===

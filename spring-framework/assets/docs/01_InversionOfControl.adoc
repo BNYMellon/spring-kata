@@ -1,0 +1,150 @@
+////
+  Copyright 2021 The Bank of New York Mellon.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+////
+= Inversion of Control in Spring
+:toc:
+:toclevels: 4
+
+== Spring - Inversion of Control
+
+Understanding how Spring "loads" its "beans".
+
+As mentioned in the introduction, *Inversion of Control* and *Dependency Injection* bring about a
+flexibility to programming.
+
+Let us walk through a few examples that show how *Inversion of Control* is possible with Spring.
+
+== Java Example without Spring
+
+1. We use a model +
+⇒ link:../../ch01_spring-inversion-of-control/src/main/java/bnymellon/training/spring/framework/model/ColoredShape.java[ColoredShape.java].
+
+2. A plain Java example with no spring used +
+⇒ link:../../ch01_spring-inversion-of-control/src/main/java/bnymellon/training/spring/framework/Ex00_NoFrameworkExample.java[Ex00_NoFrameworkExample.java].
+
+3. In order to produce a different color and shape, *_either_*, the command line arguments *_or_*, the java code needs to be manipulated.
+
+.Output
+****
+ Running the main method should output
+ > pink polygon
+ created with default values on ColoredShape which itself is instantiated with a default constructor.
+****
+
+.Questions
+****
+  1. What if the requirement was to produce two shapes: a pink and a cyan triangle?
+  2. What if the requirement was to include a blue square in addition?
+****
+
+'''
+'''
+
+== Using Spring to achieve Inversion of Control (IoC)
+
+=== Example 1 - Using Spring with Constructor Instantiation
+
+1. For the model, we have two model objects to look at +
+⇒ link:../../ch01_spring-inversion-of-control/src/main/java/bnymellon/training/spring/framework/model/ColoredShape.java[ColoredShape.java]
+
+2. Here is an example of using Spring with a constructor instantiating the value +
+⇒ link:../../ch01_spring-inversion-of-control/src/main/java/bnymellon/training/spring/framework/Ex01_InstantiationThroughConstructor.java[Ex01_InstantiationThroughConstructor.java] +
+This class has a `ClassPathXmlApplicationContext` which reads the XML configuration. The
+`ApplicationContext` is the Spring Inversion of Control. The `main` method transfers control of
+loading beans to the `ClassPathXmlApplicationContext`, which then loads _beans_ from the XML file.
+
+3. Here is the XML configuration for this Spring class +
+⇒ link:../../ch01_spring-inversion-of-control/src/main/resources/ex01-instantiation-through-constructor.xml[ex01-instantiation-through-constructor.xml].
+
+4. Notice how the default constructor from `ColoredShape` is used to configure the properties.
+
+.Output
+****
+ Running the main method should output
+ > green circle
+ created with default values on ColoredShape which itself is instantiated with a default constructor.
+****
+
+'''
+
+=== Example 2 - Using Spring with Static Factory Instantiation
+
+1. Here is an example of using Spring with a static factory instantiating the value +
+⇒ link:../../ch01_spring-inversion-of-control/src/main/java/bnymellon/training/spring/framework/Ex02_InstantiationThroughStaticFactory.java[Ex02_InstantiationThroughStaticFactory]. +
+A static method, `getInstance()` is a supplier of a `ColoredShape` instance.
+
+2. Here is the configuration for this Spring class +
+⇒ link:../../ch01_spring-inversion-of-control/src/main/resources/ex02-instantiation-through-static-factory.xml[ex02-instantiation-through-static-factory.xml]. +
+The `bean` is declared with a `factory-method`, which points to the `getInstance()` method.
+
+3. Notice how the static factory method from `Ex02_InstantiationThroughStaticFactory` is used to
+configure the properties.
+
+.Output
+****
+ Running the main method should output
+ > harlequin hexagon
+ created due to the invocation of the static factory method on Ex02_InstantiationThroughStaticFactory
+****
+
+'''
+
+=== Example 3 - Using Spring with Instance Factory Instantiation
+
+1. Here is an example of using Spring with an instance factory instantiating the value +
+⇒ link:../../ch01_spring-inversion-of-control/src/main/java/bnymellon/training/spring/framework/Ex03_InstantiationThroughInstanceFactory.java[Ex03_InstantiationThroughInstanceFactory.java]. +
+An instance method `getInstance()` is a supplier of the `ColoredShape` instance. The `constructor`
+is first called to create the class, the `ClassPathXmlApplicationContext` then parses the XML to
+configure the _bean_.
+
+2. Here is the configuration for this Spring class +
+⇒ link:../../ch01_spring-inversion-of-control/src/main/resources/ex03-instantiation-through-instance-factory.xml[ex03-instantiation-through-instance-factory.xml]. +
+The `bean` is declared with a `factory-bean` which determines that there is a `bean` that has an
+instance `factory-method`.
+
+3. Notice how the instance factory method from `Ex03_InstantiationThroughInstanceFactory` is used
+to configure the properties. The `Ex03_InstantiationThroughInstanceFactory` class is first
+constructed via a default constructor, then the instance factory method is invoked to configure
+the bean. A simple System.out.println() was added to show the loading of the class.
+
+.Output
+****
+ This should output two lines:
+ > Ex03_InstantiationThroughInstanceFactory is now loaded.
+ > red rhombus
+ created due to the instantiation and invocation of the instance method on Ex03_InstantiationThroughInstanceFactory
+****
+
+'''
+
+== Exercise Lab
+
+image:../../../assets/images/labtime.png[Lab, align="center"]
+
+The lab exercise is to fix the broken tests. Follow the instructions to fix the TODOs to get the
+JUnit test to pass.
+
+⇒ link:../../ch01_spring-inversion-of-control/src/test/java/bnymellon/training/spring/framework/Lab01Test.java[Lab01Test.java].
+
+'''
+
+[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+|===
+| Prev | TOC | Next
+
+| link:00_Introduction.adoc[Introduction]
+| link:TableOfContents.adoc[TOC]
+| link:02_DependencyInjection.adoc[Dependency Injection]
+|===

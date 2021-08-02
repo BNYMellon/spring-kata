@@ -1,0 +1,280 @@
+////
+  Copyright 2021 The Bank of New York Mellon.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+////
+= Spring Boot - Testing the REST API
+:toc:
+:toclevels: 6
+
+Building the REST test layer, using POSTMAN and viewing the swagger documentation
+
+== Testing the REST operations
+
+REST operations can be tested with several third party libraries. The examples use
+Spring's `MockMvc` as a framework of choice for testing the RESTful layer.
+
+MockMvc works by launching the application in a simulated server.
+
+. Spring Boot Web Application Test +
+⇒ link:../../todo/src/test/java/bnymellon/training/spring/boot/todo/controller/TodoAPIContractRestTest.java[TodoAPIContractRestTest.java]
+.. The test is still launched by extending JUnit using an `@ExtendWith` annotation and supplying a
+`SpringExtension.class`.
+.. The second class annotation declares that this test is a `@WebMvcTest`. Using this annotation
+prevents most auto-configurations, and simply loads configurations limited to the
+Model-View-Controller (MVC) layer, such as Controllers and not any `@Service`, `@Repository` or
+even `@Component` annotations.
+
+. A `MockMvc` is auto-wired from the Spring Context.
+
+. The `TodoService` is marked as a `@MockBean`.
+
+. The `setUp()` method runs before each test method and sets up a few `Todo` instances.
+
+. Each test method:
+.. sets up an appropriate Service mock for the action being tested
+.. creates a `RequestBuilder` with or without a payload
+.. fetches the `MvcResult` by ``perform``ing the request
+.. extracts the JSON string from the response and asserts specific values in the extracted JSON
+
+'''
+
+== Launch the application
+
+Testing the application manually, requires launching the application. The application can be
+launched from: either the IDE (run the TodoApplication).
+
+or build the spring uber jar and run the command from: +
+`java -jar todo-1.0.0.jar` +
+from the target directory.
+
+The application launches on port 8080 by default, as shown in the logs from the launch.
+
+
+=== Manual testing with tools
+
+==== Using Insomnia or Postman
+
+The application launches on port 8080 by default, as shown in the logs from the launch.
+
+===== Steps to test
+
+. Launch Insomnia or Postman.
+. Run any of the below tests as needed.
+
+'''
+
+===== Add a todo
+.Add a Todo
+****
+*Description*: Add a todo. +
+*HTTP Method type*: *POST* +
+*Endpoint*: http://localhost:8080/todos +
+*Request Payload*:
+----
+ {
+    "name": "MyTodo 3",
+    "assignee": "ABC1234",
+    "due": "Today",
+    "notes": "Some notes",
+    "activeFlag": true
+ }
+----
+****
+'''
+
+===== Fetch a single Todo by Id
+.Fetch Todo by ID
+****
+*Description*: Fetch a single todo with ID 1. +
+*HTTP Method type*: *GET* +
+*Endpoint*: http://localhost:8080/todos/1 +
+*Request Payload*:
+----
+N/A
+----
+****
+'''
+
+===== Fetch all Todos (Active-only)
+.Fetch all active Todos
+****
+*Description*: Fetch all *active* todos. +
+*HTTP Method type*: *GET* +
+*Endpoint*: http://localhost:8080/todos +
+*Request Payload*:
+----
+N/A
+----
+****
+'''
+
+===== Fetch all Todos (Active and Inactive)
+.Fetch all active and inactive Todos
+****
+*Description*: Fetch all *active* and *inactive* todos. +
+*HTTP Method type*: *GET* +
+*Endpoint*: http://localhost:8080/todos?includeInactive=true +
+*Request Payload*:
+----
+N/A
+----
+****
+'''
+
+===== Fetch Todos by assignee
+.Fetch active Todos for an assignee
+****
+*Description*: Fetch all *active* todos by assignee ABC1234. +
+*HTTP Method type*: *GET* +
+*Endpoint*: http://localhost:8080/todos/assignees/ABC1234 +
+*Request Payload*:
+----
+N/A
+----
+****
+'''
+
+===== Fetch Todos by (null) assignee
+.Fetch active Todos for a null assignee
+****
+*Description*: Fetch all *active* todos by assignee, when assignee is omitted. Should respond with an error message. +
+*HTTP Method type*: *GET* +
+*Endpoint*: http://localhost:8080/todos/assignees +
+*Request Payload*:
+----
+N/A
+----
+****
+'''
+
+===== Fetch Todos by (too short) assignee
+.Fetch active Todos for an assignee value shorter than mandated
+****
+*Description*: Fetch all *active* todos by assignee, when assignee value is too short. Should respond with an error message. +
+*HTTP Method type*: *GET* +
+*Endpoint*: http://localhost:8080/todos/assignees/ABC1 +
+*Request Payload*:
+----
+N/A
+----
+****
+'''
+
+===== Fetch Todos by (too long) assignee
+.Fetch active Todos for an assignee value longer than mandated
+****
+*Description*: Fetch all *active* todos by assignee, when assignee value is too long. Should respond with an error message. +
+*HTTP Method type*: *GET* +
+*Endpoint*: http://localhost:8080/todos/assignees/ABC12345678 +
+*Request Payload*:
+----
+N/A
+----
+****
+'''
+
+===== Update a Todo
+.Update a Todo identified by Id
+****
+*Description*: Update an existing todo. +
+*HTTP Method type*: *PUT* +
+*Endpoint*: http://localhost:8080/todos/1 +
+*Request Payload*:
+----
+{
+	  "id": 1,
+    "name": "MyTodo 3",
+    "assignee": "ABC1234",
+    "due": "Today",
+    "notes": "Some notes for 3",
+    "activeFlag": true
+}
+----
+****
+'''
+
+===== Update a non-existing Todo
+.Update a Todo identified by Id that does not exist
+****
+*Description*: Update a non-existing todo. Should respond with an error message. +
+*HTTP Method type*: *PUT* +
+*Endpoint*: http://localhost:8080/todos/37 +
+*Request Payload*:
+----
+{
+	  "id": 37,
+    "name": "MyTodo 37",
+    "assignee": "ABC1234",
+    "due": "Today",
+    "notes": "Some notes for 37",
+    "activeFlag": true
+}
+----
+****
+'''
+
+===== Delete a Todo
+.Delete a Todo identified by Id
+****
+*Description*: Delete an existing todo. +
+*HTTP Method type*: *DELETE* +
+*Endpoint*: http://localhost:8080/todos/1 +
+*Request Payload*:
+----
+N/A
+----
+****
+'''
+
+===== Delete a non-existing Todo
+.Delete a Todo identified by Id that does not exist
+****
+*Description*: Delete a non-existing todo. Should respond with an error message. +
+*HTTP Method type*: *DELETE* +
+*Endpoint*: http://localhost:8080/todos/37 +
+*Request Payload*:
+----
+N/A
+----
+****
+'''
+
+
+==== Swagger documentation
+
+Swagger URL: +
+link:http://localhost:8080/swagger-ui.html[]
+
+A Swagger JSON file is often needed specially to upload to an API store. Link to copy the JSON
+content: +
+http://localhost:8080/v2/api-docs?group=todo
+
+'''
+
+== Exercise Lab
+
+image:../../../assets/images/labtime.png[Lab, align="center"]
+
+. Create the lab insomnia collection and test swagger.
+
+'''
+
+[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+|===
+| Prev | TOC | Next
+
+| link:10_Documentation.adoc[Adding RESTful Documentation]
+| link:TableOfContents.adoc[TOC]
+|
+|===

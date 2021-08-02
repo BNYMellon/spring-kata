@@ -1,0 +1,30 @@
+////
+  Copyright 2021 The Bank of New York Mellon.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+////
+= What is the spring-course?
+
+The Spring course consists of two related tutorials that teach developers about Spring Framework and then Spring Boot. The courses lay out examples that are discussed via documentation, located under the `assets\docs` directory.
+
+The best way to take this course is to checkout the entire project locally, then view:
+
+* link:spring-framework/README.adoc[*Spring Framework Docs*]: for the Spring Framework tutorial
+* link:spring-boot/README.adoc[*Spring Boot Docs*]: for a Spring Boot tutorial.
+
+The courses are fairly independent, someone who knows Spring framework well, need only visit the Spring Boot tutorial to get up to speed. However, it is worth hitting a refresher and going through the Spring Framework content (even if solving the exercises is not attempted).
+
+== Notes about the presentation:
+
+. Please use the footer navigation on each page.
+. This is in no way a comprehensive list of all cool features of Spring and Spring Boot, and is meant as a beginner introduction.

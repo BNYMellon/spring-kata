@@ -1,0 +1,97 @@
+////
+  Copyright 2021 The Bank of New York Mellon.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+////
+= Persistence with Spring with Hibernate and JPA
+:toc:
+:toclevels: 4
+
+Understanding how to use Hibernate and Spring with Java Persistence API.
+
+== Spring persistence with Hibernate JPA - Configuration
+
+This example demonstrates persistence with Hibernate.
+
+. Hibernate dependencies +
+⇒ link:../../ch06_spring-jpa/pom.xml[pom.xml] +
+Look for `spring-jdbc`, `spring-orm`, `hibernate-core` and `hibernate-entitymanager` dependencies.
+
+. Application +
+⇒ link:../../ch06_spring-jpa/src/main/java/bnymellon/training/spring/framework/ColoredShapeApplication.java[ColoredShapeApplication.java] +
+The class loads a Spring context through an `AnnotationConfigApplicationContext`.
+
+. *Config* - the class that specifies the component scanning instruction.
+⇒ link:../../ch06_spring-jpa/src/main/java/bnymellon/training/spring/framework/config/ColoredShapeConfig.java[ColoredShapeConfig.java] +
+The config class is supplied. This config class specifies the packages to be scanned for components.
+⇒ link:../../ch06_spring-jpa/src/main/java/bnymellon/training/spring/framework/config/HibernateJPAConfig.java[HibernateJPAConfig.java] +
+The class that configures the HibernateEntityManager to connect to a database.
+
+. *Controller* layer +
+⇒ link:../../ch06_spring-jpa/src/main/java/bnymellon/training/spring/framework/controller/ColoredShapeControllingBean.java[ColoredShapeControllingBean.java] +
+The class auto-wires a `ColoredShapeService` interface, the Spring context has a
+`ColoredShapeServiceImpl` that will be used as an auto-wired instance (remember the *Liskov
+Substitution Principle*). The controller invokes the service methods to persist and retrieve
+ColoredShape instances. The class is marked with a `@Component` annotation.
+
+. *Service* layer +
+⇒ link:../../ch06_spring-jpa/src/main/java/bnymellon/training/spring/framework/service/ColoredShapeServiceImpl.java[ColoredShapeServiceImpl.java] +
+The class is marked with a `@Service` annotation. The `@Service` is an alias for the
+`@Component`annotation (see the code). It should display a
+`@AliasFor(annotation = Component.class)`. The service implementation auto-wires a
+`ColoredShapeDao` interface and will access the `ColoredShapeDaoImpl` via the spring context.
+Methods in the service delegate to methods in the DAO.
+
+. *DAO* layer +
+⇒ link:../../ch06_spring-jpa/src/main/java/bnymellon/training/spring/framework/dao/ColoredShapeDaoImpl.java[ColoredShapeDaoImpl.java] +
+The class is marked with a `@Repository` annotation. The `@Repository` annotation is an alias for
+the `@Component` annotation. It too should have a `@AliasFor(annotation = Component.class)`. The
+DAO implementation uses an instance of the `SessionFactory` to communicate with the database.
+Similar to the service, the DAO interface is wired with an implementation via the Spring context.
+
+A new dependency `hibernate-entitymanager` is added. A Java configuration is used to setup the
+embedded database (XML could have been used as well).
+
+Hibernate itself, is configured with external properties via a `@PropertySource`, pointing to
+an `application.properties`.
+
+In addition to the embedded database and Hibernate configuration, a
+`LocalContainerEntityManagerFactoryBean` is configured to manage persistence for Hibernate.
+
+The *service* layer invokes the *DAO* layer. The *DAO* layer declares an `EntityManager`, as
+a `@PersistenceContext`.
+
+The transaction management is performed via the annotation `@Transactional`. The DAO is declared
+as _read-only_ as default for the entire class and as _read-write with propagation_ for the
+`save` method.
+
+== Quiz time
+
+image:../../../assets/images/quiz-time.png[Quiz, align="center"]
+
+- What is Hibernate's Spring JPA class for persistence?
+
+- What is the core Hibernate class for persistence?
+
+- Why is one preferred over the other?
+
+'''
+
+[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+|===
+| Prev | TOC | Next
+
+| link:05_PersistenceWithHibernate.adoc[Persistence with Hibernate]
+| link:TableOfContents.adoc[TOC]
+| link:07_PersistenceWithSpringDataJPA.adoc[Persistence with Spring Data JPA]
+|===

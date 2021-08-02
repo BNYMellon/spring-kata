@@ -1,0 +1,133 @@
+////
+  Copyright 2021 The Bank of New York Mellon.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+////
+= Spring Boot - Profiles and Configuration
+:toc:
+:toclevels: 4
+
+Configure and customize Spring Boot applications.
+
+== Activating Profiles
+Spring Boot allows activation of profiles. When no specific profile is set to be active, Spring Boot
+selects what is known as `default` profile.
+
+Profiles in Spring Boot can be activated in several ways:
+
+Command Line:: Add a `-Dspring.profile.active=<PROFILE_NAME>` when running the app
+Environment Variable:: Set and export an environment variable +
+`spring_profiles_active = <PROFILE_NAME>`
+System Property:: Set a SystemProperty +
+`System.setProperty("spring.profiles.active", "<PROFILE_NAME>")`
+ConfigurableEnvironment:: Invoke a `setActiveProfiles(<PROFILE_NAME>)` on the `@Autowired` instance of the
+`ConfigurableEnvironment`
+
+'''
+
+== Spring External Configuration
+
+Spring provides multiple ways to configure portions of the application. As of *Spring Boot v2.4.2*,
+there are 14 different ways to configure a Spring Boot application, with a clear hierarchy of how
+each configuration overrides values set in previous configuration formats.
+
+A lot more is covered at the
+link:https://docs.spring.io/spring-boot/docs/2.4.2/reference/htmlsingle/#boot-features-external-config[*Spring Boot Reference - External Configuration*].
+
+In the Todo examples only the YAML variants are covered.
+
+. Default application.yaml +
+⇒ link:../../todo/src/main/resources/application.yaml[application.yaml]
+.. The default yaml configuration file contains a portion separated by a ---. These are profile
+sections.
+.. The spring: config: activate: on-profile determined when the section is activated.
+.. A value for `todo.title` is set when the profile is activated.
+
+. Application yaml for development environment +
+⇒ link:../../todo/src/main/resources/application-development.yaml[application-development.yaml]
+.. Loaded when the active profiles includes *development*.
+.. A value for `todo.descriptiveText` is set when the *development* profile is activated.
+
+. Application yaml for production environment +
+⇒ link:../../todo/src/main/resources/application-production.yaml[application-production.yaml]
+.. Loaded when the active profiles includes *production*.
+.. A value for `todo.descriptiveText` is set when the *production* profile is activated.
+
+. Loading the custom configurations into the context +
+⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/config/ProfileConfigurationProperties.java[ProfileConfigurationProperties.java] +
+.. The `@ConfigurationProperties` sets the prefix for the properties handled by this class.
+.. The `title` and `descriptiveText` are loaded into the instance, which is also injected into
+the context, thanks to the `@Component` annotation.
+
+The content in `application.yaml` is always loaded. The Spring active profile determines if the
+suffixed files also get loaded.
+
+For instance, setting the active profile to *production*, will cause the
+`application-production.yaml` to be loaded.
+
+'''
+
+== Spring Profiles
+
+Spring Profiles set on beans and configurations allow for selective loading. This is set with a
+`@Profile` annotation on a bean or configuration. When a Spring Profile is activated, the bean or
+configuration that is marked by the profile is activated and added to the context.
+
+While the actual Swagger documentation context is not yet covered, as a preview, let us examine the
+usage of profiles in the Swagger configuration.
+
+. Default Swagger configuration +
+⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/config/TodoDefaultServiceSwaggerConfig.java[TodoDefaultServiceSwaggerConfig.java] +
+.. This configuration is loaded when no profile is specifically made active.
+.. The `@Profile` annotation at the class specifies that this is activated for the *default* profile.
+
+. Development Swagger configuration +
+⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/config/TodoDevelopmentServiceSwaggerConfig.java[TodoDevelopmentServiceSwaggerConfig.java] +
+.. This configuration is loaded when the *development* profile is made active (and the *default*
+profile is inactive).
+.. The `@Profile` annotation at the class specifies that this is activated for the *development*
+profile and not when the *default* active.
+.. This configuration uses the `@Autowired` `ProfileConfigurationProperties` instance.
+
+. Production Swagger configuration +
+⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/config/TodoProductionServiceSwaggerConfig.java[TodoProductionServiceSwaggerConfig.java] +
+.. This configuration is loaded when the *production* profile is made active (and the *default*
+profile is inactive).
+.. The `@Profile` annotation at the class specifies that this is activated for the *production*
+profile and not when the *default* active.
+.. This configuration uses the `@Autowired` `ProfileConfigurationProperties` instance.
+
+'''
+
+== Exercise Lab
+
+image:../../../assets/images/labtime.png[Lab, align="center"]
+
+. Update the application.yaml to include an activation for development and production.
+.. Set a lab:swaggerTitle: for development and for production.
+. Create yaml files for environments:
+.. *development* and *production*.
+.. set the value lab:description to match the environment.
+. Create empty Swagger configurations with the right profiles.
+
+'''
+
+[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+|===
+| Prev | TOC | Next
+
+| link:08_ControllerLayer.adoc[Working with the Controller Layer]
+| link:TableOfContents.adoc[TOC]
+| link:10_Documentation.adoc[Adding RESTful Documentation]
+|===
+

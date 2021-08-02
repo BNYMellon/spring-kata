@@ -1,0 +1,99 @@
+////
+  Copyright 2021 The Bank of New York Mellon.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+////
+= How to create a Spring Boot project
+:toc:
+:toclevels: 4
+
+
+The common methods of setting up Spring boot are:
+
+* Using the online Spring Initializr (that is not a typo).
+
+* Using the IntelliJ Spring Boot plugin for Spring Initializr.
+
+* Using the EclipseJ plugin for Spring Tools using Spring Initializr.
+
+'''
+
+== How to create a spring boot project - Online
+
+. Navigate to https://start.spring.io/. +
+Defaults are acceptable: Generate a Maven Project with Java 11 and Spring Boot 2.4.x
+
+. Provide a group id and artifact id: +
+*Group*: `bnymellon.training.spring.boot` +
+*Artifact*: `lab` +
+
+. Switch to using the full version of the wizard.
+
+. Select: *JPA* and *H2*.
+
+. Click *_Generate Project_* and download the zip file, `lab.zip`
+
+. Unzip the file and open the project in IDE.
+
+'''
+
+== How to create a spring boot project - IntelliJ IDEA
+
+. Install the Spring Boot plugin. Navigate to File ↠ New ↠ Project ... +
+Defaults are acceptable (choose a Java 11 SDK). +
+→ Next
+
+. Provide a group id and artifact id: +
+*Group*: `bnymellon.training.spring.boot` +
+*Artifact*: `lab` +
+→ Next
+
+. Select: *JPA* and *H2*. +
+→ Next
+
+. Accept / modify default location and project information. +
+→ Finish
+
+'''
+
+== How to create a spring boot project - Eclipse IDE
+
+. Install the Spring Tools from the Eclipse Marketplace (read and accept licenses). Navigate to File ↠New ↠ Other ... +
+Defaults are acceptable (choose a Java 11 SDK).
+
+. Update the fields : +
+*Name*: `lab` +
+*Group*: `bnymellon.training.spring.boot` +
+*Artifact*: `lab` +
+*Package*: `bnymellon.training.spring.boot.lab`
+
+. Accept / modify default location and project information. +
+→ Next
+
+. Select: *JPA* and *H2*. +
+→ Finish
+
+'''
+
+Other options such as using a Spring Boot CLI or other IDEs exist, but are not included here.
+
+'''
+
+[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+|===
+| Prev | TOC | Next
+
+| link:00_Introduction.adoc[Introduction]
+| link:TableOfContents.adoc[TOC]
+| link:02_TutorialProjectOverview.adoc[Overview of the Tutorial Project]
+|===

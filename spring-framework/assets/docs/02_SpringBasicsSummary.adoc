@@ -1,0 +1,110 @@
+////
+  Copyright 2021 The Bank of New York Mellon.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+////
+= Summary of what was covered
+:toc:
+:toclevels: 4
+
+== Overview
+Spring is an application framework. The framework itself comprises several modules building on a
+`spring-core` library.
+
+=== Inversion of Control (IoC)
+Spring provides for object instantiation through any of:
+
+- constructor
+- static factory
+- instance factory
+
+=== Dependency Injection (DI)
+Spring provides dependency injection through any of:
+
+- XML
+- annotations
+- plain Java
+
+== Additional details
+
+=== Bean Scopes
+
+Spring beans have different scopes:
+
+[options="header" cols="^15%,<85%"]
+|===
+| Scope | Explanation
+
+| *singleton* (Default) | Scopes a single bean definition to a single object instance per Spring
+IoC container.
+| *prototype* | Scopes a single bean definition to any number of object instances.
+| *request* | Scopes a single bean definition to the lifecycle of a single HTTP request;
+that is, each HTTP request has its own instance of a bean created off the back of a single bean
+definition. Only valid in the context of a web-aware Spring ApplicationContext.
+| *session* | Scopes a single bean definition to the lifecycle of an HTTP Session. Only valid in
+the context of a web-aware Spring ApplicationContext.
+| *globalSession* | Scopes a single bean definition to the lifecycle of a global HTTP Session.
+Typically, only valid when used in a Portlet context. Only valid in the context of a web-aware
+Spring ApplicationContext.
+| *application* | Scopes a single bean definition to the lifecycle of a ServletContext. Only
+valid in the context of a web-aware Spring ApplicationContext.
+| *webSocket* | Scopes a single bean definition to the lifecycle of a WebSocket. Only valid in the
+context of a web-aware Spring ApplicationContext.
+| *_<custom>_* | The bean scoping mechanism is extensible; new custom scopes can be defined.
+Also, possible to redefine existing scopes, although the latter is considered bad practice. Not
+possible to override the built-in singleton and prototype scopes.
+|===
+
+NOTE: Under most normal situations, spring beans default of singleton suffices.
+
+=== Coparing Spring annotations to Standard JSR-330 annotations
+Spring offers support for link:https://jcp.org/en/jsr/detail?id=330[JSR-330, https://jcp.org/en/jsr/detail?id=330] standard annotations (Dependency Injection). JSR-330 is a
+*Java Specification Request* for Dependency Injection standards. It provides annotations similar
+to what Spring has for dependency injection. Spring is compatible with JSR-330 annotations.
+
+Spring JSR-330 Notes
+
+[options="header" cols="^10%,^10%,<80%"]
+|===
+| Spring | JSR-330 | Notes
+
+| `@Autowired` | `@Inject` | @Inject has no 'required' attribute; can be used with Java 8’s
+Optional instead.
+| `@Component` | `@Named` / `@ManagedBean` | JSR-330 does not provide a composable model, just a
+way to identify named components.
+| `@Scope("singleton")` | `@Singleton` | The JSR-330 default scope is like Spring’s prototype.
+However, in order to keep it consistent with Spring’s general defaults, a JSR-330 bean declared
+in the Spring container is a singleton by default. In order to use a scope other than singleton,
+use Spring’s @Scope annotation. javax.inject also provides a @Scope annotation. Nevertheless,
+this one is only intended to be used for creating custom annotations.
+| `@Qualifier` | `@Qualifier` / `@Named` | javax.inject.Qualifier is just a meta-annotation for
+building custom qualifiers. Concrete String qualifiers (like Spring’s @Qualifier with a value) can be
+associated through javax.inject.Named.
+| `@Value` | - | no equivalent.
+| `@Required` | - | no equivalent.
+| `@Lazy` | - | no equivalent.
+| *ObjectFactory* | *Provider* | @javax.inject.Provider is a direct alternative to Spring’s
+ObjectFactory, just with a shorter get() method name. It can also be used in combination with
+Spring’s @Autowired or with non-annotated constructors and setter methods.
+|===
+
+'''
+
+[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+|===
+| Prev | TOC | Next
+
+| link:02_DependencyInjection.adoc[Dependency Injection]
+| link:TableOfContents.adoc[TOC]
+| link:03_Testing.adoc[Testing with Spring]
+|===

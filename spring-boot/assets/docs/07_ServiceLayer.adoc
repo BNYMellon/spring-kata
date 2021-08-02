@@ -1,0 +1,87 @@
+////
+  Copyright 2021 The Bank of New York Mellon.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+////
+= Spring Boot - The Service Layer
+:toc:
+:toclevels: 4
+
+Building the service layer and its unit tests
+
+== The Service Layer
+
+The service layer:
+
+* breaks down the incoming request from the controller
+* makes the necessary calls to the repository layers
+* stitches the response Java objects
+* sends them back to the API/Controller layer
+* performs business logic validations
+* throws the right exceptions when issues are encountered
+
+We use an interface-implementation model here, so we have more flexibility in autowiring and testing.
+
+. Service Interface +
+⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/service/TodoService.java[TodoService.java] +
+.. This interface defines all the service methods that are publicly available.
+
+. Service Implementation +
+⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/service/TodoServiceImpl.java[TodoServiceImpl.java] +
+.. The Service implementation implements all the methods listed in the Service interface.
+.. The `constructor` autowires a `TodoRepository` interface which is made available via a Spring
+context.
+.. The Service implementation also includes validations of some constraints. These validations
+throw necessary custom exceptions (in this example, extending the RuntimeException).
+
+'''
+
+== The Service unit test
+
+The service is tested with `@SpringBootTest`.
+
+. Test extending the abstract test setup +
+⇒ link:../../todo/src/test/java/bnymellon/training/spring/boot/todo/service/TodoServiceTest.java[TodoServiceTest.java]
+.. The `setUp()` method runs *_before each test method_* and adds a Mock implementation of the
+repository.
+.. A Mock object wraps around the actual one, and replaces certain method calls with other
+functionality.
+.. In this example, the mock object replaces actual database calls with fake responses simulating
+a database access.
+.. This test can thus run without a database.
+
+IMPORTANT: The mock todoRepository switches functionality *_when_* a matching condition is met. The
+`thenReturn` or `thenAnswer` provides a response that simulates the actual database action.
+
+'''
+
+== Exercise Lab
+
+image:../../../assets/images/labtime.png[Lab, align="center"]
+
+. Create the lab service layer and unit test. Standard CRUD operations on Account plus methods for:
+.. Find By OwnerLastName, should return a list.
+.. Find By Active = True, should return a list.
+.. Find By Active = True And Owner Last Name, should return a list.
+.. Find By First Name matching part of the string, should return an optional list.
+
+'''
+
+[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+|===
+| Prev | TOC | Next
+
+| link:06_Exceptions.adoc[Working with Exceptions]
+| link:TableOfContents.adoc[TOC]
+| link:08_ControllerLayer.adoc[Working with the Controller Layer]
+|===

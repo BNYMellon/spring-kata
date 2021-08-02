@@ -1,0 +1,172 @@
+////
+  Copyright 2021 The Bank of New York Mellon.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+////
+= Persistence with Spring
+:toc:
+:toclevels: 4
+
+Understanding how to write into and read from a database using Spring.
+
+== Spring Persistence - Overview
+
+Spring provides many ways of persistence.
+
+Covering all possibilities is outside the scope of this tutorial.
+
+Some commonly used persistence mechanisms are explained in the next few chapters.
+
+This chapter delves into the most basic persistence, to explain the fundamentals.
+
+Note that the examples use an embedded database, which does not replace the need for an actual
+external database in production applications. The logic, hoever, remain the same.
+
+Similar to previous chapters two examples of a spring-configuration: XML and Java based are used.
+
+== Spring Persistence - Examples
+Both examples share some common features.
+
+- Relies on an embedded database. An embedded database H2 is used an in-memory database.
+
+- Any changes made during a run will be wiped out when the application terminates, since this is
+an embedded database, scoped to the execution of the application.
+
+=== Common steps
+. Creating the database table and seeding it with values +
+⇒ link:../../ch04_spring-persistence/src/main/resources/db/sql/create-tables.sql[create-tables.sql] +
+Creating the database tables. +
+⇒ link:../../ch04_spring-persistence/src/main/resources/db/sql/insert-data.sql[insert-data.sql] +
+Seeding the database table with data.
+
+. Including a new identifier attribute `id` into the `ColoredShape`. +
+⇒ link:../../ch04_spring-persistence/src/main/java/bnymellon/training/spring/framework/model/ColoredShape.java[ColoredShape.java] +
+Model for the Colored Shape
+
+. Creating an interface to abstract the methods of the *Data Access Object*. Check the
+Create-Read-Update-Delete (*CRUD*) operations. +
+⇒ link:../../ch04_spring-persistence/src/main/java/bnymellon/training/spring/framework/dao/ColoredShapeDao.java[ColoredShapeDao.java] +
+DAO interface to communicate with the database.
+
+NOTE: Using System.out.println(...), is generally a very bad idea, it is only used here to
+illustrate the functioning of the persistence layer.
+
+The typical use of such code is in testing, where a real database can be replaced with an embedded
+one, to produce a reusable test environment.
+
+=== Persistence with XML Context configuration
+This example demonstrates using an XML context for persistence.
+
+. The main class to run: +
+⇒ link:../../ch04_spring-persistence/src/main/java/bnymellon/training/spring/framework/Ex01_DB_XMLConfigured.java[Ex01_DB_XMLConfigured.java] +
+This class loads the `spring-config.xml` using a `ClassPathXmlApplicationContext`. A
+`ColoredShapeDao` is picked from the Spring context and the CRUD calls are made via the DAO.
+
+. The XML-based configuration *spring-config.xml* loads a few beans into the Spring context. +
+⇒ link:../../ch04_spring-persistence/src/main/resources/spring-config.xml[spring-config.xml] +
+The XML creates a datasource bean, which then invokes the creates database tables and seeds values
+from the two SQL files. This is done via `jdbc:scripts`.
+
+. The _Data Access Object_ performs the tasks of operating with the database. The class used for
+this example implements the `ColoredShapeDao` interface. +
+⇒ link:../../ch04_spring-persistence/src/main/java/bnymellon/training/spring/framework/dao/ColoredShapeDaoImplEx01.java[ColoredShapeDaoImplEx01.java] +
+This class is an implementation of the `ColoredShapeDao` interface. All CRUD methods are
+implemented. The DAO implementation also defines a `RowMapper`, as a `ColoredShapeMapper`, that
+maps a `ResultSet` to a `ColoredShape` Java object. The XML config passes in the `dataSource` as a
+*constructor argument*.
+
+The spring-config.xml declares an embedded database as a dataSource. The dataSource is the most
+important bean in persistence. A reference of this dataSource is passed to the Data Access
+Object (DAO), so the DAO can invoke data operations on the dataSource.
+
+.Output
+****
+ Running the main method should output
+ > INFO: Starting embedded database: url='jdbc:h2:mem:dataSource;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+ > Added to DB, ID[4]: Color: [teal], Shape: [trapezium]
+ > ID: [1]: Color: [red], Shape: [rhombus]
+ > ID: [2]: Color: [orange], Shape: [oval]
+ > ID: [3]: Color: [pink], Shape: [polygon]
+ > ID: [4]: Color: [teal], Shape: [trapezium]
+ > Updated in DB, ID[1]: Color: [red], Shape: [rectangle]
+ > ID: [1]: Color: [red], Shape: [rectangle]
+ > ID: [2]: Color: [orange], Shape: [oval]
+ > ID: [3]: Color: [pink], Shape: [polygon]
+ > ID: [4]: Color: [teal], Shape: [trapezium]
+****
+
+'''
+
+=== Persistence with Java Context configuration
+This example demonstrates using an Java context for persistence.
+
+. The main class to run: +
+⇒ link:../../ch04_spring-persistence/src/main/java/bnymellon/training/spring/framework/Ex02_DB_JavaConfigured.java[Ex02_DB_JavaConfigured.java] +
+This class loads the `@Configuration` via _ComponentScan_ using an
+`AnnotationConfigApplicationContext`. A `ColoredShapeDao` is picked from the Spring context, and the
+CRUD calls are made via the DAO.
+
+. The Java-based configuration is scanned via the `@ComponentScan`: +
+⇒ link:../../ch04_spring-persistence/src/main/java/bnymellon/training/spring/framework/model/DBConfiguration.java[DBConfiguration.java] +
+The Java configuration declares an embedded database as a dataSource. The dataSource is an important
+bean in persistence. An autowiring of this dataSource to the Data Access Object (DAO), allows
+the DAO to invoke data operations on the dataSource.
+
+. The _Data Access Object_ performs the tasks of operating with the database. The class used for
+this example implements the `ColoredShapeDao` interface. +
+⇒ link:../../ch04_spring-persistence/src/main/java/bnymellon/training/spring/framework/dao/ColoredShapeDaoImplEx02.java[ColoredShapeDaoImplEx02.java] +
+This class is an implementation of the `ColoredShapeDao` interface. All CRUD methods are
+implemented. The DAO implementation also defines a `RowMapper`, as a `ColoredShapeMapper`, that
+maps a `ResultSet` to a `ColoredShape` Java object. An `@Autowired` annotation on the constructor
+_injects_ the `dataSource` into the DAO.
+
+The DBConfiguration declares an embedded database as a dataSource. The dataSource is the most
+important bean in persistence. An autowiring of this dataSource to the Data Access Object (DAO),
+allows the DAO to invoke data operations on the dataSource.
+
+.Output
+****
+ Running the main method should output
+ > INFO: Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+ > Added to DB, ID[4]: Color: [teal], Shape: [trapezium]
+ > ID: [1]: Color: [red], Shape: [rhombus]
+ > ID: [2]: Color: [orange], Shape: [oval]
+ > ID: [3]: Color: [pink], Shape: [polygon]
+ > ID: [4]: Color: [teal], Shape: [trapezium]
+ > Updated in DB, ID[1]: Color: [red], Shape: [rectangle]
+ > ID: [1]: Color: [red], Shape: [rectangle]
+ > ID: [2]: Color: [orange], Shape: [oval]
+ > ID: [3]: Color: [pink], Shape: [polygon]
+ > ID: [4]: Color: [teal], Shape: [trapezium]
+****
+
+== Quiz Time
+
+image:../../../assets/images/quiz-time.png[Quiz, align="center"]
+
+- What is the most important bean for persistence?
+
+- What is a DAO?
+
+- What is CRUD?
+
+'''
+
+[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+|===
+| Prev | TOC | Next
+
+| link:03_Testing.adoc[Testing with Spring]
+| link:TableOfContents.adoc[TOC]
+| link:05_PersistenceWithHibernate.adoc[Persistence with Hibernate]
+|===

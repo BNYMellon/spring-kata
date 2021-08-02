@@ -1,0 +1,157 @@
+////
+  Copyright 2021 The Bank of New York Mellon.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+////
+= Testing with Spring
+:toc:
+:toclevels: 4
+
+Understanding how to test spring beans.
+
+== Why testing is so important
+Unit tests have many advantages. Testing facilitates:
+
+- validation of the component design in isolation, making it easier to debug when there's a problem.
+- testing of functionality which is either not exposed or not easily accessible from the program's
+external interfaces, for instance, error handling and functionality which has no UI.
+- a cheap way to ensure no major existing functionality is broken across the system when a
+cross-component change is made.
+- a means for people unfamiliar with the code to verify their changes haven't broken anything.
+Additionally, tests provide an easy way to start understanding the functionality.
+- to automate what might otherwise be arduous manual testing.
+
+== Spring - testing overview
+We will cover testing with Spring as an embedded portion of every chapter. However, this chapter
+is focused on understanding the core testing framework Spring provides.
+
+Spring tests use annotations, and are similar to JUnit tests.
+
+Spring provides a JUnit test runner, `@SpringRunner` or its legacy forerunner, `@SpringJUnit4ClassRunner`.
+
+Each Spring test can be launched with a JUnit runner hint on the test class:
+[source,java]
+----
+@ExtendWith(SpringExtension.class)
+----
+
+Context for the test can be easily passed with an `@ContextConfiguration` which looks for a
+bean definition context file *prefixed with the name of the class* the test resides in.
+
+ContextConfiguration can also supply an argument to list one or more java classes that are
+annotated with a `@Configuration`.
+
+Spring testing relies heavily on the *Liskov Substitution Principle*. Thus, all Spring layers
+are typically coded as an interface plus its implementation. Testing with such an approach allows
+for replacing the implementation with a fake (mock) one that implements the higher interface.
+
+'''
+
+=== Testing with default XML context configuration
+
+This example demonstrates using a *default XML context* for testing code. This uses the name of
+the test class with a suffix of `-context.xml` under the resources.
+
+1. The JUnit test +
+⇒ link:../../ch03_spring-testing/src/test/java/bnymellon/training/spring/framework/Ex01_DefaultXMLContextConfiguration.java[Ex01_DefaultXMLContextConfiguration.java] +
+This class is a JUnit test marked with an annotation `@ContextConfiguration`. This annotation
+hints at looking for an XML file with the same name (and under the same package), suffixed with
+`-context.xml`. Thus running the class will cause Spring to search for a file named
+`Ex01_DefaultXMLContextConfiguration-context.xml` on the classpath, and load beans from the XML file,
+should it be located.
+
+2. The XML file +
+⇒ link:../../ch03_spring-testing/src/test/resources/bnymellon/training/spring/framework/Ex01_DefaultXMLContextConfiguration-context.xml[Ex01_DefaultXMLContextConfiguration-context.xml] +
+The default context configuration file (same package, name matches the Java class and adds a `-context.xml`).
+
+The `@ContextConfiguration` without any arguments will look for an XML file in the same package
+which has a name, with the convention <JavaClassName>-context.xml. Notice the package location of
+this XML matches the package location of the Java class as well, even though it is not under
+src/test/java, but under src/test/resources.
+
+This XML is auto-loaded and beans defined in this XML are available for autowiring.
+
+'''
+
+=== Testing with custom XML context configuration
+
+This example demonstrates using a *custom XML context* for testing code. This uses the name of
+the XML passed into as the location attribute.
+
+1. The JUnit test +
+⇒ link:../../ch03_spring-testing/src/test/java/bnymellon/training/spring/framework/Ex02_CustomXMLContextConfiguration.java[Ex02_CustomXMLContextConfiguration.java] +
+This class is a JUnit test marked with an annotation `@ContextConfiguration`. This annotation now
+includes a `locations` attribute, specifying the *XML file to load the context from*. Thus running
+the class will cause Spring to search for the file on the classpath, and load beans from the XML
+file, should it be located.
+
+2. The XML file +
+⇒ link:../../ch03_spring-testing/src/test/resources/ex02.xml[ex02.xml] +
+The XML file can have any name and any location.
+
+The `@ContextConfiguration` with the `locations` attribute looks for the XML file in the classpath
+specified. Notice that the XML file no longer needs a naming convention and that the location of
+this XML is not connected to the Java class location, it just needs to be on the classpath.
+
+This XML is auto-loaded and beans defined in this XML are available for autowiring.
+
+'''
+
+=== Testing with Java context configuration
+
+This example demonstrates using a Java configuration context for testing code. There is no XML file,
+the context is loaded from a Java class marked with the `@Configuration` annotation.
+
+1. The JUnit test +
+⇒ link:../../ch03_spring-testing/src/test/java/bnymellon/training/spring/framework/Ex03_JavaContextConfiguration.java[Ex03_JavaContextConfiguration.java] +
+This class is a JUnit test marked with an annotation `@ContextConfiguration`. This annotation
+now includes a `classes` attribute, specifying the *class to load the context from*. Thus running
+the class will cause Spring to search for the file on the classpath, and load beans from the XML
+file, should it be located.
+
+2. The Configuration class +
+⇒ link:../../ch03_spring-testing/src/main/java/bnymellon/training/spring/framework/model/DIConfiguration.java[DIConfiguration.java] +
+This class is located under the *main* module and is scanned during the launch of the test code,
+and loads the beans defined in the class, into the context.
+
+The `@ContextConfiguration` with the `classes` attribute looks for the Java configurations on the
+classpath specified. Notice that the `DIConfiguration` is stereotyped as a `@Configuration` and it
+also initiates a `@ComponentScan` for the basePackage of the *model*. The scan, while not
+necessary here, is shown as a means to load other components for the test, if and when necessary.
+The configuration provides two different `ColoredShapeHolder` instances, both of which can be
+independently accessed in the test.
+
+'''
+
+== Exercise Lab
+
+image:../../../assets/images/labtime.png[Lab, align="center"]
+
+The lab exercise is to fix the broken tests. Follow the instructions to fix the TODOs to get the
+JUnit test to pass.
+
+⇒ link:../../ch03_spring-testing/src/test/java/bnymellon/training/spring/framework/Lab01Test.java[Lab01Test.java] +
+⇒ link:../../ch03_spring-testing/src/test/java/bnymellon/training/spring/framework/Lab02Test.java[Lab02Test.java] +
+⇒ link:../../ch03_spring-testing/src/test/java/bnymellon/training/spring/framework/Lab03Test.java[Lab03Test.java]
+
+
+'''
+
+[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+|===
+| Prev | TOC | Next
+
+| link:02_SpringBasicsSummary.adoc[IoC and DI - Summary]
+| link:TableOfContents.adoc[TOC]
+| link:04_PersistenceWithJDBC.adoc[Persistence with JDBC]
+|===

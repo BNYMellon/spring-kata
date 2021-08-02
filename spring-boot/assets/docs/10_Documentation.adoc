@@ -1,0 +1,122 @@
+////
+  Copyright 2021 The Bank of New York Mellon.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+////
+= Spring Boot - API Documentation
+:toc:
+:toclevels: 4
+
+Building the controller layer - documentation and response handling
+
+== Swagger documentation
+The controller layer consists of an interface and an implementation of the interface. The
+implementation focuses on the functional controller logic while the interface serves as the
+contract for the API to the consumers of the service.
+
+The ideal location for the documentation thus is the interface.
+
+Interface +
+⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/controller/TodoAPIContract.java[TodoAPIContract.java]
+
+Model +
+⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/model/Todo.java[Todo.java]
+
+Below is a list of annotations used to document the API.
+
+`@Api`:: Marks the class as a Swagger resource. Such tags logically group operations when the
+documentation is generated.
+
+`@ApiOperation`:: Describes an API operation. The value shows as the summary of the operation
+while the notes show as the detailed description.
+
+`@ApiResponses`:: A wrapper to allow a list of multiple response objects, listing the HTTP code,
+message and the Java class that maps to the response payload.
+
+`@ApiParam`:: Provides meta-data for the operation parameters.
+
+`@ApiModelProperty`:: Adds and manipulates data of a model property.
+
+== Swagger configuration
+
+The swagger annotations on the classes will need to be picked up, parsed and converted into a
+meaningful document. This is done via a @Configuration class that Spring Boot loads on startup.
+
+As covered in the previous chapter, Swagger configurations rely on Profiles.
+
+. Default Swagger Configuration
+⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/config/TodoDefaultServiceSwaggerConfig.java[TodoDefaultServiceSwaggerConfig.java]
+
+. Development Swagger Configuration
+⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/config/TodoDevelopmentServiceSwaggerConfig.java[TodoDevelopmentServiceSwaggerConfig.java]
+
+. Production Swagger Configuration
+⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/config/TodoProductionServiceSwaggerConfig.java[TodoProductionServiceSwaggerConfig.java]
+
+`@EnableSwagger2`:: Indicates that Swagger support should be enabled. Only functional if included
+in a class also marked as a @Configuration.
+
+`Docket`:: A Documentation plugin that serves as an entry point into the spring framework.
+A Docket is used to configure the paths to search for swagger annotations, any filters, and
+an ApiInfo instance.
+
+`ApiInfo`:: A swagger meta-data holder for the documentation. Attributes include a title,
+description, terms of service, a license and a version.
+
+'''
+
+== Response Handling
+
+With valid operations and parameters, under normal circumstances, the controller communicates
+with the traversal layers to complete the round-trip of the operation. Once it receives a response
+back from the service layer, the controller pushes the result into the response object along with
+some metadata, to be transmitted back to the API invoker.
+
+In case of erroneous inputs or adverse circumstances, one of the layers may throw exceptions.
+Such exceptions should be converted into known exceptions. Either:
+
+* either handle the Exception in the controller to generate a meaningful response.
+* or catch and convert the exception into a known exception and handle the known exception in
+the controller.
+
+In the todo-service, the exceptions are handled in the controller, using an `@ExceptionHandler`.
+The handler specifies the exception(s) being handled.
+
+Appropriate HTTP response codes and failure messages are included in the response, so the
+invoking consumer of the service gets a detailed information. The HTTP error code serves as an
+important means to automate processing of responses for the service consumer.
+
+. The Contract implementation +
+⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/controller/TodoAPIContractImpl.java[TodoAPIContractImpl.java]
+.. `TodoNotFoundException` - (404) Handling
+.. `InvalidIdException` - (412) Handling
+.. `InvalidAssigneeException` - (412) Handling
+
+'''
+
+== Exercise Lab
+
+image:../../../assets/images/labtime.png[Lab, align="center"]
+
+. Create the lab swagger documentation and controller exception handling.
+
+'''
+
+[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+|===
+| Prev | TOC | Next
+
+| link:09_ProfilesConfiguration.adoc[Profiles and Configuration]
+| link:TableOfContents.adoc[TOC]
+| link:11_APITests.adoc[Testing the RESTful API]
+|===
