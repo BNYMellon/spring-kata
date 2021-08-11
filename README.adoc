@@ -13,6 +13,10 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 ////
+:img-build-status: https://github.com/BNYMellon/spring-kata/workflows/Spring%20Katas%20CI%20Build/badge.svg?branch=main
+:uri-build-status: https://github.com/BNYMellon/spring-kata/actions?query=workflow%3A%22Spring+Katas+CI+Build%22
+image:{img-build-status}[Build Status,link={uri-build-status}]
+
 = What is the spring-course?
 
 The Spring course consists of two related tutorials that teach developers about Spring Framework and then Spring Boot. The courses lay out examples that are discussed via documentation, located under the `assets\docs` directory.
