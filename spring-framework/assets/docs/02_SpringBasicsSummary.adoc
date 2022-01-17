@@ -67,7 +67,7 @@ possible to override the built-in singleton and prototype scopes.
 
 NOTE: Under most normal situations, spring beans default of singleton suffices.
 
-=== Coparing Spring annotations to Standard JSR-330 annotations
+=== Comparing Spring annotations to Standard JSR-330 annotations
 Spring offers support for link:https://jcp.org/en/jsr/detail?id=330[JSR-330, https://jcp.org/en/jsr/detail?id=330] standard annotations (Dependency Injection). JSR-330 is a
 *Java Specification Request* for Dependency Injection standards. It provides annotations similar
 to what Spring has for dependency injection. Spring is compatible with JSR-330 annotations.
