@@ -1,4 +1,4 @@
-#  Copyright 2021 The Bank of New York Mellon.
+#  Copyright 2022 The Bank of New York Mellon.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -12,27 +12,31 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
+server:
+  port : 8761
+
 spring:
-  jpa:
-    show-sql: true
+  application:
+    name: registry
 
-test:
-  reset:
-    sql:
-      template: ALTER TABLE %s ALTER COLUMN id RESTART WITH 1
-
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
 ---
 spring:
   config:
     activate:
       on-profile: development
 todo:
-  title: Todo Dev Application
+  title: Registry Dev Application
 
 ---
 spring:
   config:
     activate:
       on-profile: production
-todo:
-  title: Todo Application
+---
+
+logging:
+  level.: debug

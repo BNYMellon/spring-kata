@@ -1,0 +1,41 @@
+////
+  Copyright 2022 The Bank of New York Mellon.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+////
+
+= Spring Boot Admin
+:toc:
+:toclevels: 4
+
+Adding Spring Boot Admin module
+
+== What is Spring Boot Admin?
+
+Spring Boot Admin Open Source project was developed by codecentric to allow managing and monitoring of Spring Boot Applications. Chapters 0-11 covered how to create Spring Boot Application. This chapter will cover the how to monitor the application created in the previous chapters.
+
+Spring Boot Admin is essentially a web UI written on top of Spring Boot Actuator, providing the visualization for the actuator end points and metrics of various applications.
+
+Spring Boot Admin setup is divided into two parts, server and client setup. This chapter will cover settings one spring boot admin server and two spring boot admin clients.
+
+== Exercises
+
+- Create a separate module for Spring Boot Admin server. See spring-boot-with-admin/admin
+- Make Todo App one of the SBA clients.
+- Add Login Credentials to SBA dashboard
+- Add another SBA Client with cloud discovery (eureka) and show alternative way to register the SBA client.
+- Secure todo app and provide authorization to SBA - spring.security.user.name
+- Add Logging configuration
+- Add Version number
+- Add Metadata and instance information
+- Add Notifications to slack

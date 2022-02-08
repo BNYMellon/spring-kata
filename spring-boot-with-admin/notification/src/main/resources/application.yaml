@@ -1,0 +1,93 @@
+#  Copyright 2022 The Bank of New York Mellon.
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+
+server:
+  port: 8070
+
+spring:
+  application:
+    name: notification
+  boot:
+    admin:
+      client:
+        # url, user and password to access admin server. Checkout the spring.security.user.name and password in admin server properties
+        username: traininguser
+        # DONOT DO THIS IN PRODUCTION APPS
+        password: password
+        # without this section, admin server can't access the secure end points other than health and info
+        instance:
+          metadata:
+            user.name: ${spring.security.user.name}
+            user.password: ${spring.security.user.password}
+            # https://codecentric.github.io/spring-boot-admin/current/#show-instance-tags
+            tags:
+              environment: ${notification.descriptive-text}
+  #securing the end points using spring security
+  security:
+    user:
+      name: notificationuser
+      password: password
+
+# come back check on this
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+# https://codecentric.github.io/spring-boot-admin/current/#show-instance-tags
+info:
+  tags:
+    environment: ${notification.descriptive-text}
+
+#logging configurations https://codecentric.github.io/spring-boot-admin/current/#logfile
+logging:
+  file:
+    name: notification-service-prod.log
+
+---
+
+todo:
+  base:
+    url: http://localhost:8060
+---
+
+spring:
+  config:
+    activate:
+      on-profile: development
+notification:
+  title: Notification Dev Application
+
+---
+spring:
+  config:
+    activate:
+      on-profile: production
+notification:
+  title: Notification Application
+
+---
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+  client:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8761}/eureka/
+---

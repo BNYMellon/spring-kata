@@ -22,12 +22,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>bnymellon.training.spring.boot</groupId>
-    <artifactId>parent</artifactId>
+    <artifactId>spring-boot-with-admin</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
-    <name>Spring Training - Aggregator POM</name>
-    <description>Aggregator POM for the Spring Katas</description>
+    <name>Spring Admin Training - Aggregator POM</name>
+    <description>Aggregator POM for the Spring Boot Admin Katas</description>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -44,11 +44,9 @@
     </properties>
 
     <modules>
-        <module>spring-boot/todo</module>
-        <module>spring-framework</module>
-        <module>spring-boot-with-admin/admin</module>
-        <module>spring-boot-with-admin/registry</module>
-        <module>spring-boot-with-admin/notification</module>
+        <module>admin</module>
+        <module>registry</module>
+        <module>notification</module>
     </modules>
 
 </project>
