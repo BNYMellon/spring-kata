@@ -1,0 +1,20 @@
+
+${AnsiBackground.WHITE}${AnsiStyle.BOLD}                                                                                                                                     ${AnsiBackground.BLACK}
+${AnsiBackground.WHITE}                                                                                                                                     ${AnsiBackground.BLACK}
+${AnsiBackground.WHITE}${AnsiColor.RED}       *##***      ***   *#*    ***   ***     *#*    *#*    ${AnsiColor.BRIGHT_WHITE}       ${AnsiColor.BLUE}  *#######*               **           **                         ${AnsiBackground.BLACK}
+${AnsiBackground.WHITE}${AnsiColor.RED}       ******      *#*   *#*    ***   **      *#*    *#*    ${AnsiColor.BRIGHT_WHITE}       ${AnsiColor.BLUE}  ****#****               **           **                         ${AnsiBackground.BLACK}
+${AnsiBackground.WHITE}${AnsiColor.RED}       **  ***     ****  *#*     *** ***      ****   ***    ${AnsiColor.BRIGHT_WHITE}       ${AnsiColor.BLUE}     *#*                                                          ${AnsiBackground.BLACK}
+${AnsiBackground.WHITE}${AnsiColor.RED}       **  **      ***** *#*     *** **       ****  ****    ${AnsiColor.BRIGHT_WHITE}       ${AnsiColor.BLUE}     *#*    ***** *****   **  ******   **  ******   *******       ${AnsiBackground.BLACK}
+${AnsiBackground.WHITE}${AnsiColor.RED}       ******      ***#* *#*      *****       ****  ****    ${AnsiColor.BRIGHT_WHITE} ***   ${AnsiColor.BLUE}     *#*    ***** ******  **  *****#*  **  *****#*  *******       ${AnsiBackground.BLACK}
+${AnsiBackground.WHITE}${AnsiColor.RED}       ***#*       ** ****#*      ****        ***** ****    ${AnsiColor.BRIGHT_WHITE} *#*   ${AnsiColor.BLUE}     *#*    ***      *#*  **  *** ***  **  *** *** ***   **       ${AnsiBackground.BLACK}
+${AnsiBackground.WHITE}${AnsiColor.RED}       ******      ** ****#*       ***        **********    ${AnsiColor.BRIGHT_WHITE} ***   ${AnsiColor.BLUE}     *#*    **     ***#*  **  **   **  **  **   ** *#*   **       ${AnsiBackground.BLACK}
+${AnsiBackground.WHITE}${AnsiColor.RED}       **  *#*     **  ***#*       **         ** **** **    ${AnsiColor.BRIGHT_WHITE}       ${AnsiColor.BLUE}     *#*    **   *****#*  **  **   **  **  **   ** *#*   **       ${AnsiBackground.BLACK}
+${AnsiBackground.WHITE}${AnsiColor.RED}       **  *#*     **  ***#*       **         ** **** **    ${AnsiColor.BRIGHT_WHITE}       ${AnsiColor.BLUE}     *#*    **   *#* *#*  **  **   **  **  **   **  **  ***       ${AnsiBackground.BLACK}
+${AnsiBackground.WHITE}${AnsiColor.RED}       *******     **   *##*       **         ** **** **    ${AnsiColor.BRIGHT_WHITE}       ${AnsiColor.BLUE}     *#*    **   *****#*  **  **   **  **  **   **  *******       ${AnsiBackground.BLACK}
+${AnsiBackground.WHITE}${AnsiColor.RED}       *##***      **    *#*       **         **  **  **    ${AnsiColor.BRIGHT_WHITE}       ${AnsiColor.BLUE}     *#*    **    ******* **  **   **  **  **   **  *******       ${AnsiBackground.BLACK}
+${AnsiBackground.WHITE}${AnsiColor.RED}                                                            ${AnsiColor.BRIGHT_WHITE}       ${AnsiColor.BLUE}                                                        *#*       ${AnsiBackground.BLACK}
+${AnsiBackground.WHITE}${AnsiColor.RED}                                                            ${AnsiColor.BRIGHT_WHITE}       ${AnsiColor.BLUE}                                                    *******       ${AnsiBackground.BLACK}
+${AnsiBackground.WHITE}${AnsiColor.RED}                                                            ${AnsiColor.BRIGHT_WHITE}       ${AnsiColor.BLUE}                                                    ******        ${AnsiBackground.BLACK}
+${AnsiBackground.BLACK}                                                  ${AnsiColor.BRIGHT_YELLOW}Spring and Spring Boot Training.                                                   
+${AnsiBackground.BLACK}                                                  Powered by Spring Boot v ${spring-boot.version}
+       
