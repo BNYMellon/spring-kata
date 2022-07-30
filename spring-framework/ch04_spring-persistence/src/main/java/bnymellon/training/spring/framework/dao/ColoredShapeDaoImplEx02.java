@@ -57,7 +57,7 @@ public class ColoredShapeDaoImplEx02 implements ColoredShapeDao {
 
         String sql = "select * from coloredshape where id = ?";
 
-        ColoredShape coloredShape = jdbcTemplate.queryForObject(sql, new Object[]{id}, new ColoredShapeMapper());
+        ColoredShape coloredShape = jdbcTemplate.queryForObject(sql, new ColoredShapeMapper(), id);
 
         return coloredShape;
     }
