@@ -23,6 +23,19 @@
             http://www.springframework.org/schema/context/spring-context.xsd">
 
 <!-- create right configuration to pass the tests -->
+    <context:annotation-config/>
 
+    <bean id="vehicle" class="bnymellon.training.spring.framework.model.Vehicle">
+        <property name="year" value="2016"/>
+        <property name="type" value="truck"/>
+
+
+    </bean>
+
+    <bean id="constructorAnnotatedBulkVehicleOrder" class="bnymellon.training.spring.framework.model.ConstructorAnnotatedBulkVehicleOrder">
+
+            <property name="quantity" value="5"/>
+
+    </bean>
 
 </beans>

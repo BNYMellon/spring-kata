@@ -44,7 +44,7 @@ public class Lab02Test {
         // TODO: Add a bean definition with id=setterAnnotatedBulkVehicleOrder in the src/test/resources/test-inject-with-annotations1.xml
         // TODO: 'Wire' the setter for the vehicle, in the SetterAnnotatedBulkVehicleOrder.java
         // UNCOMMENT BELOW CODE AND FIX IT.
-/*
+
         SetterAnnotatedBulkVehicleOrder setterAnnotatedBulkVehicleOrder =
                 (SetterAnnotatedBulkVehicleOrder) context.getBean("setterAnnotatedBulkVehicleOrder");
         assertEquals(
@@ -52,7 +52,7 @@ public class Lab02Test {
                 setterAnnotatedBulkVehicleOrder.toString(),
                 "The order should be: 1 count of 2017 car"
         );
-*/
+
     }
 
     @Test
@@ -63,7 +63,7 @@ public class Lab02Test {
         // TODO: Add a bean definition with id=constructorAnnotatedBulkVehicleOrder in the src/test/resources/test-inject-with-annotations2.xml
         // TODO: 'Wire' the setter for the vehicle, in the ConstructorAnnotatedBulkVehicleOrder.java
         // UNCOMMENT BELOW CODE AND FIX IT.
-/*
+
         ConstructorAnnotatedBulkVehicleOrder constructorAnnotatedBulkVehicleOrder =
                 (ConstructorAnnotatedBulkVehicleOrder) context.getBean("constructorAnnotatedBulkVehicleOrder");
         assertEquals(
@@ -71,7 +71,7 @@ public class Lab02Test {
                 constructorAnnotatedBulkVehicleOrder.toString(),
                 "The order should be: 5 count of 2016 truck"
         );
-*/
+
     }
 
     @Test
@@ -83,7 +83,7 @@ public class Lab02Test {
         // TODO: Add a bean definition with id=constructorAnnotatedWithQualifierBulkVehicleOrder in the src/test/resources/test-inject-with-annotations3.xml
         // TODO: 'Wire' the constructor for the 'vehicle', with a qualifier, in the ConstructorAnnotatedWithQualifierBulkVehicleOrder.java
         // UNCOMMENT BELOW CODE AND FIX IT.
-/*
+
         ConstructorAnnotatedWithQualifierBulkVehicleOrder constructorAnnotatedWithQualifierBulkVehicleOrder =
                 (ConstructorAnnotatedWithQualifierBulkVehicleOrder) context.getBean("constructorAnnotatedWithQualifierBulkVehicleOrder");
         assertEquals(
@@ -91,7 +91,7 @@ public class Lab02Test {
                 constructorAnnotatedWithQualifierBulkVehicleOrder.toString(),
                 "The order should be: 7 count of 2014 airplane"
         );
-*/
+
     }
 
 }

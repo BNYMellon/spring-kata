@@ -16,6 +16,8 @@
 
 package bnymellon.training.spring.framework.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 // TODO: Fix this class to Autowire using a setter
 public class SetterAnnotatedBulkVehicleOrder {
 
@@ -25,9 +27,11 @@ public class SetterAnnotatedBulkVehicleOrder {
     public SetterAnnotatedBulkVehicleOrder() {
     }
 
+
     public SetterAnnotatedBulkVehicleOrder(final Vehicle vehicle) {
         this.vehicle = vehicle;
     }
+
 
     public SetterAnnotatedBulkVehicleOrder(final Vehicle vehicle, final int quantity) {
         this.vehicle = vehicle;
@@ -38,6 +42,7 @@ public class SetterAnnotatedBulkVehicleOrder {
         return vehicle;
     }
 
+    @Autowired
     public void setVehicle(final Vehicle vehicle) {
         this.vehicle = vehicle;
     }
@@ -45,6 +50,7 @@ public class SetterAnnotatedBulkVehicleOrder {
     public int getQuantity() {
         return quantity;
     }
+
 
     public void setQuantity(final int quantity) {
         this.quantity = quantity;
