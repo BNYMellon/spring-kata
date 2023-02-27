@@ -20,5 +20,9 @@
 	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
     <!-- create bean definitions to pass the tests -->
-
+    <bean id="vehicleThroughConstructor" class="bnymellon.training.spring.framework.model.Vehicle"> </bean>
+    <bean id="vehicleThroughStaticFactory" class="bnymellon.training.spring.framework.model.VehicleFactory"
+          factory-method="getStaticVehicle"></bean>
+    <bean id="vehicleFactory" class="bnymellon.training.spring.framework.model.VehicleFactory"></bean>
+    <bean id="vehicleThroughInstanceFactory" factory-bean="vehicleFactory" factory-method="getVehicle"></bean>
 </beans>
