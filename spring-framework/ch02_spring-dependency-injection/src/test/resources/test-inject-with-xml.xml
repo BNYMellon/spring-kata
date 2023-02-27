@@ -30,8 +30,8 @@
     </bean>
 
     <bean id="vehicleThroughConstructorIndex" class="bnymellon.training.spring.framework.model.Vehicle">
-        <constructor-arg index="0" value="truck"/>
-        <constructor-arg index="1" value="2016"/>
+        <constructor-arg index="0" value="bike"/>
+        <constructor-arg index="1" value="2015"/>
 
     </bean>
 
