@@ -17,7 +17,6 @@
 :toc:
 :toclevels: 4
 
-
 The common methods of setting up Spring boot are:
 
 * Using the online Spring Initializr (that is not a typo).
@@ -49,7 +48,8 @@ Defaults are acceptable: Generate a Maven Project with Java 11 and Spring Boot 2
 
 == How to create a spring boot project - IntelliJ IDEA
 
-. Install the Spring Boot plugin. Navigate to File ↠ New ↠ Project ... +
+. Install the Spring Boot plugin.
+Navigate to File ↠ New ↠ Project ... +
 Defaults are acceptable (choose a Java 11 SDK). +
 → Next
 
@@ -68,7 +68,8 @@ Defaults are acceptable (choose a Java 11 SDK). +
 
 == How to create a spring boot project - Eclipse IDE
 
-. Install the Spring Tools from the Eclipse Marketplace (read and accept licenses). Navigate to File ↠New ↠ Other ... +
+. Install the Spring Tools from the Eclipse Marketplace (read and accept licenses).
+Navigate to File ↠New ↠ Other ... +
 Defaults are acceptable (choose a Java 11 SDK).
 
 . Update the fields : +
@@ -89,7 +90,7 @@ Other options such as using a Spring Boot CLI or other IDEs exist, but are not i
 
 '''
 
-[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+[width=100%,cols="<10%,^80%,>10%",grid=none,frame=ends]
 |===
 | Prev | TOC | Next
 

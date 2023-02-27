@@ -16,12 +16,9 @@
 
 package bnymellon.training.spring.framework;
 
+import bnymellon.training.spring.framework.model.BulkVehicleOrder;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import bnymellon.training.spring.framework.model.BulkVehicleOrder;
-
-import static org.springframework.test.util.AssertionErrors.assertEquals;
 
 //TODO: Run this test with the right runner.
 //TODO: Use default XML context configuration to configure an order of 10 count of 2017 car.

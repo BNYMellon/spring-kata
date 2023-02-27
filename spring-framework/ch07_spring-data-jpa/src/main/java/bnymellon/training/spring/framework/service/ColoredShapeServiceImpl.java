@@ -16,12 +16,11 @@
 
 package bnymellon.training.spring.framework.service;
 
+import bnymellon.training.spring.framework.dao.ColoredShapeDao;
+import bnymellon.training.spring.framework.model.ColoredShape;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import bnymellon.training.spring.framework.dao.ColoredShapeDao;
-import bnymellon.training.spring.framework.model.ColoredShape;
 
 @Service
 @Transactional(readOnly = true)

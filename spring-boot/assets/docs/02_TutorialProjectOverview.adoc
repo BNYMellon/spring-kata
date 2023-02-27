@@ -23,7 +23,8 @@ How the Spring Boot tutorial is split.
 
 The next few chapters will cover a todo service.
 
-The Todo service creates a RESTful service to Create, Read, Update and Delete todo instances. Each Todo instance has a:
+The Todo service creates a RESTful service to Create, Read, Update and Delete todo instances.
+Each Todo instance has a:
 
 * id: the generated ID of the Todo
 * name: the name of the Todo
@@ -77,7 +78,7 @@ The logical way to code these layers will thus take a reverse approach:
 
 '''
 
-[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+[width=100%,cols="<10%,^80%,>10%",grid=none,frame=ends]
 |===
 | Prev | TOC | Next
 

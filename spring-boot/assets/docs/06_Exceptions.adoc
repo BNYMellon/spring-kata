@@ -21,9 +21,7 @@ Creating custom exceptions to handle business condition failures.
 
 == The Exceptions
 
-The samples for this chapter cater to business conditions such as invalid id, invalid assignee,
-invalid length of assignee parameter, and a todo not found use case, common in ``GET``s, ``PUT``s
-and ``DELETE``s.
+The samples for this chapter cater to business conditions such as invalid id, invalid assignee, invalid length of assignee parameter, and a todo not found use case, common in ``GET``s, ``PUT``s and ``DELETE``s.
 
 . Invalid ID +
 ⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/model/exception/InvalidIdException.java[InvalidIdException.java]
@@ -41,7 +39,7 @@ and ``DELETE``s.
 
 == Exercise Lab
 
-image:../../../assets/images/labtime.png[Lab, align="center"]
+image:../../../assets/images/labtime.png[Lab,align="center"]
 
 . Create the lab exception(s):
 .. `AccountNotFoundException` - when searching for a non-existing account id.
@@ -51,7 +49,7 @@ image:../../../assets/images/labtime.png[Lab, align="center"]
 
 '''
 
-[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+[width=100%,cols="<10%,^80%,>10%",grid=none,frame=ends]
 |===
 | Prev | TOC | Next
 

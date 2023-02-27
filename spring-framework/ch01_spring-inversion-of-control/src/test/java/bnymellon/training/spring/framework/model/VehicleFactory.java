@@ -22,12 +22,12 @@ public class VehicleFactory {
     public static Vehicle getStaticVehicle() {
 
         //TODO: fix this.
-        return new Vehicle("truck",2016);
+        return new Vehicle("truck", 2016);
     }
 
     public Vehicle getVehicle() {
 
         //TODO: fix this.
-        return new Vehicle("bike",2015);
+        return new Vehicle("bike", 2015);
     }
 }

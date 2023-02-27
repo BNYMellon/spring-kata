@@ -39,10 +39,9 @@ We use an interface-implementation model here, so we have more flexibility in au
 . Service Implementation +
 ⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/service/TodoServiceImpl.java[TodoServiceImpl.java] +
 .. The Service implementation implements all the methods listed in the Service interface.
-.. The `constructor` autowires a `TodoRepository` interface which is made available via a Spring
-context.
-.. The Service implementation also includes validations of some constraints. These validations
-throw necessary custom exceptions (in this example, extending the RuntimeException).
+.. The `constructor` autowires a `TodoRepository` interface which is made available via a Spring context.
+.. The Service implementation also includes validations of some constraints.
+These validations throw necessary custom exceptions (in this example, extending the RuntimeException).
 
 '''
 
@@ -52,24 +51,23 @@ The service is tested with `@SpringBootTest`.
 
 . Test extending the abstract test setup +
 ⇒ link:../../todo/src/test/java/bnymellon/training/spring/boot/todo/service/TodoServiceTest.java[TodoServiceTest.java]
-.. The `setUp()` method runs *_before each test method_* and adds a Mock implementation of the
-repository.
-.. A Mock object wraps around the actual one, and replaces certain method calls with other
-functionality.
-.. In this example, the mock object replaces actual database calls with fake responses simulating
-a database access.
+.. The `setUp()` method runs *_before each test method_* and adds a Mock implementation of the repository.
+.. A Mock object wraps around the actual one, and replaces certain method calls with other functionality.
+.. In this example, the mock object replaces actual database calls with fake responses simulating a database access.
 .. This test can thus run without a database.
 
-IMPORTANT: The mock todoRepository switches functionality *_when_* a matching condition is met. The
+IMPORTANT: The mock todoRepository switches functionality *_when_* a matching condition is met.
+The
 `thenReturn` or `thenAnswer` provides a response that simulates the actual database action.
 
 '''
 
 == Exercise Lab
 
-image:../../../assets/images/labtime.png[Lab, align="center"]
+image:../../../assets/images/labtime.png[Lab,align="center"]
 
-. Create the lab service layer and unit test. Standard CRUD operations on Account plus methods for:
+. Create the lab service layer and unit test.
+Standard CRUD operations on Account plus methods for:
 .. Find By OwnerLastName, should return a list.
 .. Find By Active = True, should return a list.
 .. Find By Active = True And Owner Last Name, should return a list.
@@ -77,7 +75,7 @@ image:../../../assets/images/labtime.png[Lab, align="center"]
 
 '''
 
-[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+[width=100%,cols="<10%,^80%,>10%",grid=none,frame=ends]
 |===
 | Prev | TOC | Next
 

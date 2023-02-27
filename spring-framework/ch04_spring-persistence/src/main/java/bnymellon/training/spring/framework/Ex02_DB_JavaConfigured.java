@@ -16,13 +16,12 @@
 
 package bnymellon.training.spring.framework;
 
-import java.util.List;
-
+import bnymellon.training.spring.framework.dao.ColoredShapeDao;
+import bnymellon.training.spring.framework.model.ColoredShape;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
-import bnymellon.training.spring.framework.dao.ColoredShapeDao;
-import bnymellon.training.spring.framework.model.ColoredShape;
+import java.util.List;
 
 @ComponentScan(basePackages = {"bnymellon.training.spring.framework.model", "bnymellon.training.spring.framework.dao"})
 public class Ex02_DB_JavaConfigured {

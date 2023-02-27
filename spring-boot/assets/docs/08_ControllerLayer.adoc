@@ -21,11 +21,9 @@ Building the controller layer and its unit tests
 
 == The Responses
 
-Each incoming request should have an appropriate response, be it a data response or an error
-response.
+Each incoming request should have an appropriate response, be it a data response or an error response.
 
-The response package has several java classes that make up various data and error
-responses.
+The response package has several java classes that make up various data and error responses.
 
 . A Status object to provide status information (request success, code and a description) +
 ⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/model/response/Status.java[Status.java]
@@ -38,7 +36,8 @@ responses.
 
 . A TodoResponse interface is a marker interface for several other responses +
 ⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/model/response/TodoResponse.java[TodoResponse.java]
-.. A *marker* (or *tagging*) interface is one that has no actual methods. The sole pupose is to act as a hierarchical ancestor for a class that implements such an interface.
+.. A *marker* (or *tagging*) interface is one that has no actual methods.
+The sole pupose is to act as a hierarchical ancestor for a class that implements such an interface.
 
 . A TodoSuccessResponse object that includes a metadata and a single todo object +
 ⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/model/response/TodoSuccessResponse.java[TodoSuccessResponse.java]
@@ -52,6 +51,7 @@ responses.
 '''
 
 == The Responses unit tests
+
 As with the model, the responses have a few attributes, the tests focus on the `equals`, `hashCode`
 and the `toString` methods.
 
@@ -76,28 +76,24 @@ and the `toString` methods.
 '''
 
 == The Controller Layer
-The controller layer breaks down the incoming HTTP request and makes the necessary calls to the
-service layers, acts as a layer marshalling and unmarshalling the request/response objects
-from/to JSON.
+
+The controller layer breaks down the incoming HTTP request and makes the necessary calls to the service layers, acts as a layer marshalling and unmarshalling the request/response objects from/to JSON.
 
 The controller layer also pads the relevant metadata as a part of building out a response.
 
-The controller package has an interface and an implementation. The interface is covered in more
-detail in a subsequent chapter.
+The controller package has an interface and an implementation.
+The interface is covered in more detail in a subsequent chapter.
 
 . Controller Interface +
 ⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/controller/TodoAPIContract.java[TodoAPIContract.java]
-.. There are a lot of annotations on each interface method, but in essence, there are six declared
-methods, all of which, return a `ResponseEntity<TodoResponse>`.
+.. There are a lot of annotations on each interface method, but in essence, there are six declared methods, all of which, return a `ResponseEntity<TodoResponse>`.
 
 . ControllerImplementation +
 ⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/controller/TodoAPIContractImpl.java[TodoAPIContractImpl.java]
 .. The controller implementation is marked with a `@RestController` stereotype.
 .. The class has a `@RequestMapping` annotation which provides a context path for the web URLs.
-.. The `constructor` autowires a `TodoService` interface which is made available via a Spring
-context.
-.. The Controller Implementation validates the request body upon invocation and also creates the
-response body to return the desired content.
+.. The `constructor` autowires a `TodoService` interface which is made available via a Spring context.
+.. The Controller Implementation validates the request body upon invocation and also creates the response body to return the desired content.
 .. The metadata information is baked into the responses built out from the service calls.
 
 NOTE: Ignore the annotations surrounding the methods, these will be discussed later.
@@ -105,16 +101,16 @@ NOTE: Ignore the annotations surrounding the methods, these will be discussed la
 '''
 
 == The Controller unit test
+
 The controller is tested with @SpringBootTest.
 
 . Test extending the abstract test setup +
 ⇒ link:../../todo/src/test/java/bnymellon/training/spring/boot/todo/controller/TodoAPIContractTest.java[TodoAPIContractTest.java]
 .. This test extends from the *abstract* test class which adds a *mock* implementation of the
 `TodoService` with a `@MockBean` annotation.
-.. The `@MockBean` is a mockito utility present in the `spring-boot-test.jar` that injects a bean
-into the Spring context after adding some mock responses.
-.. The calls to the `TodoContractImpl` pass a `null` for a *request*. This test is simply unit
-testing all operations, so no JSON is sent with the request and no JSON is expected as a response.
+.. The `@MockBean` is a mockito utility present in the `spring-boot-test.jar` that injects a bean into the Spring context after adding some mock responses.
+.. The calls to the `TodoContractImpl` pass a `null` for a *request*.
+This test is simply unit testing all operations, so no JSON is sent with the request and no JSON is expected as a response.
 
 . Abstract mock setup +
 ⇒ link:../../todo/src/test/java/bnymellon/training/spring/boot/todo/AbstractTodoMockSetupTest.java[AbstractTodoMockSetupTest.java]
@@ -124,7 +120,7 @@ testing all operations, so no JSON is sent with the request and no JSON is expec
 
 == Exercise Lab
 
-image:../../../assets/images/labtime.png[Lab, align="center"]
+image:../../../assets/images/labtime.png[Lab,align="center"]
 
 . Create the lab responses and controller layers and appropriate unit tests.
 .. Cover the basic HTTP Error code responses shown in the sample.
@@ -136,7 +132,7 @@ image:../../../assets/images/labtime.png[Lab, align="center"]
 
 '''
 
-[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+[width=100%,cols="<10%,^80%,>10%",grid=none,frame=ends]
 |===
 | Prev | TOC | Next
 

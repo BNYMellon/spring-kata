@@ -16,14 +16,13 @@
 
 package bnymellon.training.spring.framework.dao;
 
+import bnymellon.training.spring.framework.model.ColoredShape;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import bnymellon.training.spring.framework.model.ColoredShape;
 
 @Repository
 @Transactional(readOnly = true)

@@ -74,6 +74,6 @@ public class ColoredShape {
     }
 
     public String toString() {
-        return "ID: [" + id + "]: Color: [" + color + "], Shape: [" + shape +"]";
+        return "ID: [" + id + "]: Color: [" + color + "], Shape: [" + shape + "]";
     }
 }

@@ -16,10 +16,9 @@
 
 package bnymellon.training.spring.framework;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 import bnymellon.training.spring.framework.config.ColoredShapeConfig;
 import bnymellon.training.spring.framework.controller.ColoredShapeController;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class ColoredShapeApplication {
 

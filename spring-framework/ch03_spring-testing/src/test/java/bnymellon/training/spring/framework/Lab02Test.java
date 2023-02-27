@@ -16,12 +16,9 @@
 
 package bnymellon.training.spring.framework;
 
+import bnymellon.training.spring.framework.model.BulkVehicleOrder;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import bnymellon.training.spring.framework.model.BulkVehicleOrder;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 //TODO: Run this test with the right runner.

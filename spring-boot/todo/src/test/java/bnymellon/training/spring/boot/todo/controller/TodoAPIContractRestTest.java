@@ -39,14 +39,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.Arrays;
 
-import static bnymellon.training.spring.boot.todo.TodoConstants.INVALID_ASSIGNEE_LENGTH_MESSAGE;
-import static bnymellon.training.spring.boot.todo.TodoConstants.INVALID_ID_MESSAGE;
-import static bnymellon.training.spring.boot.todo.TodoConstants.INVALID_NULL_ASSIGNEE_MESSAGE;
-import static bnymellon.training.spring.boot.todo.TodoConstants.TODO_NOT_FOUND_EXCEPTION;
+import static bnymellon.training.spring.boot.todo.TodoConstants.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.eq;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 
 @ExtendWith(SpringExtension.class)
@@ -509,7 +504,7 @@ public class TodoAPIContractRestTest {
 
         when(todoService.getTodosByAssignee(eq("ABCDEFGHIJKL")))
                 .thenThrow(new InvalidAssigneeException(
-                                INVALID_ASSIGNEE_LENGTH_MESSAGE, "ABCDEFGHIJKL"));
+                        INVALID_ASSIGNEE_LENGTH_MESSAGE, "ABCDEFGHIJKL"));
 
         // Invoke the GET operation at the /todos/assignees/{assignee} endpoint with ABCDEFGHIJKL.
         RequestBuilder requestBuilder =

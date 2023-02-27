@@ -30,12 +30,12 @@
     <context:component-scan base-package="bnymellon.training.spring.framework"/>
 
     <jdbc:embedded-database id="dataSource" type="H2">
-        <jdbc:script location="classpath:db/sql/create-tables.sql" />
-        <jdbc:script location="classpath:db/sql/insert-data.sql" />
+        <jdbc:script location="classpath:db/sql/create-tables.sql"/>
+        <jdbc:script location="classpath:db/sql/insert-data.sql"/>
     </jdbc:embedded-database>
 
-    <bean id="coloredShapeDao" class="bnymellon.training.spring.framework.dao.ColoredShapeDaoImplEx01" >
-        <constructor-arg ref="dataSource" />
+    <bean id="coloredShapeDao" class="bnymellon.training.spring.framework.dao.ColoredShapeDaoImplEx01">
+        <constructor-arg ref="dataSource"/>
     </bean>
 
 </beans>

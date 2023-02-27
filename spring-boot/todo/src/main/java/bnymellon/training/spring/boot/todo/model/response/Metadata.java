@@ -16,12 +16,12 @@
 
 package bnymellon.training.spring.boot.todo.model.response;
 
-import java.io.Serializable;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.io.Serializable;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -144,10 +144,14 @@ public class Metadata implements Serializable {
 
         Metadata metadata = (Metadata) o;
 
-        if (serviceName != null ? !serviceName.equals(metadata.serviceName) : metadata.serviceName != null) return false;
-        if (serviceVersion != null ? !serviceVersion.equals(metadata.serviceVersion) : metadata.serviceVersion != null) return false;
-        if (requestTimestamp != null ? !requestTimestamp.equals(metadata.requestTimestamp) : metadata.requestTimestamp != null) return false;
-        if (responseTimestamp != null ? !responseTimestamp.equals(metadata.responseTimestamp) : metadata.responseTimestamp != null) return false;
+        if (serviceName != null ? !serviceName.equals(metadata.serviceName) : metadata.serviceName != null)
+            return false;
+        if (serviceVersion != null ? !serviceVersion.equals(metadata.serviceVersion) : metadata.serviceVersion != null)
+            return false;
+        if (requestTimestamp != null ? !requestTimestamp.equals(metadata.requestTimestamp) : metadata.requestTimestamp != null)
+            return false;
+        if (responseTimestamp != null ? !responseTimestamp.equals(metadata.responseTimestamp) : metadata.responseTimestamp != null)
+            return false;
         if (status != null ? !status.equals(metadata.status) : metadata.status != null) return false;
         if (requestId != null ? !requestId.equals(metadata.requestId) : metadata.requestId != null) return false;
         if (responseId != null ? !responseId.equals(metadata.responseId) : metadata.responseId != null) return false;

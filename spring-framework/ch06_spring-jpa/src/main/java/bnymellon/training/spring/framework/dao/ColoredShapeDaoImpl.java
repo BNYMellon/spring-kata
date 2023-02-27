@@ -16,14 +16,13 @@
 
 package bnymellon.training.spring.framework.dao;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
+import bnymellon.training.spring.framework.model.ColoredShape;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import bnymellon.training.spring.framework.model.ColoredShape;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 @Repository
 @Transactional(readOnly = true)

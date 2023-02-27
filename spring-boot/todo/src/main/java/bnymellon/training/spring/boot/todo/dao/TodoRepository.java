@@ -16,14 +16,13 @@
 
 package bnymellon.training.spring.boot.todo.dao;
 
-import java.util.List;
-import java.util.Optional;
-
+import bnymellon.training.spring.boot.todo.model.Todo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import bnymellon.training.spring.boot.todo.model.Todo;
+import java.util.List;
+import java.util.Optional;
 
 public interface TodoRepository extends JpaRepository<Todo, Long> {
 

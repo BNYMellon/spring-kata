@@ -16,9 +16,9 @@
 
 package bnymellon.training.spring.boot.todo.service;
 
-import java.util.List;
-
 import bnymellon.training.spring.boot.todo.model.Todo;
+
+import java.util.List;
 
 public interface TodoService {
 

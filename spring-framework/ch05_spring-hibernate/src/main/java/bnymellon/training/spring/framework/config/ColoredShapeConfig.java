@@ -20,6 +20,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(value={"bnymellon.training.spring.framework"})
+@ComponentScan(value = {"bnymellon.training.spring.framework"})
 public class ColoredShapeConfig {
 }

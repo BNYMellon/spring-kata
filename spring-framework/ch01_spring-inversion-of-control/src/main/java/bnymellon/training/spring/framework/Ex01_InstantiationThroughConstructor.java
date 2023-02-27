@@ -16,10 +16,9 @@
 
 package bnymellon.training.spring.framework;
 
+import bnymellon.training.spring.framework.model.ColoredShape;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import bnymellon.training.spring.framework.model.ColoredShape;
 
 public class Ex01_InstantiationThroughConstructor {
     public static void main(String args[]) {

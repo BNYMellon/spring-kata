@@ -21,8 +21,7 @@
 
 Understanding how Spring "loads" its "beans".
 
-As mentioned in the introduction, *Inversion of Control* and *Dependency Injection* bring about a
-flexibility to programming.
+As mentioned in the introduction, *Inversion of Control* and *Dependency Injection* bring about a flexibility to programming.
 
 Let us walk through a few examples that show how *Inversion of Control* is possible with Spring.
 
@@ -45,8 +44,8 @@ Let us walk through a few examples that show how *Inversion of Control* is possi
 
 .Questions
 ****
-  1. What if the requirement was to produce two shapes: a pink and a cyan triangle?
-  2. What if the requirement was to include a blue square in addition?
+1. What if the requirement was to produce two shapes: a pink and a cyan triangle?
+2. What if the requirement was to include a blue square in addition?
 ****
 
 '''
@@ -61,9 +60,10 @@ Let us walk through a few examples that show how *Inversion of Control* is possi
 
 2. Here is an example of using Spring with a constructor instantiating the value +
 ⇒ link:../../ch01_spring-inversion-of-control/src/main/java/bnymellon/training/spring/framework/Ex01_InstantiationThroughConstructor.java[Ex01_InstantiationThroughConstructor.java] +
-This class has a `ClassPathXmlApplicationContext` which reads the XML configuration. The
-`ApplicationContext` is the Spring Inversion of Control. The `main` method transfers control of
-loading beans to the `ClassPathXmlApplicationContext`, which then loads _beans_ from the XML file.
+This class has a `ClassPathXmlApplicationContext` which reads the XML configuration.
+The
+`ApplicationContext` is the Spring Inversion of Control.
+The `main` method transfers control of loading beans to the `ClassPathXmlApplicationContext`, which then loads _beans_ from the XML file.
 
 3. Here is the XML configuration for this Spring class +
 ⇒ link:../../ch01_spring-inversion-of-control/src/main/resources/ex01-instantiation-through-constructor.xml[ex01-instantiation-through-constructor.xml].
@@ -89,8 +89,7 @@ A static method, `getInstance()` is a supplier of a `ColoredShape` instance.
 ⇒ link:../../ch01_spring-inversion-of-control/src/main/resources/ex02-instantiation-through-static-factory.xml[ex02-instantiation-through-static-factory.xml]. +
 The `bean` is declared with a `factory-method`, which points to the `getInstance()` method.
 
-3. Notice how the static factory method from `Ex02_InstantiationThroughStaticFactory` is used to
-configure the properties.
+3. Notice how the static factory method from `Ex02_InstantiationThroughStaticFactory` is used to configure the properties.
 
 .Output
 ****
@@ -105,19 +104,17 @@ configure the properties.
 
 1. Here is an example of using Spring with an instance factory instantiating the value +
 ⇒ link:../../ch01_spring-inversion-of-control/src/main/java/bnymellon/training/spring/framework/Ex03_InstantiationThroughInstanceFactory.java[Ex03_InstantiationThroughInstanceFactory.java]. +
-An instance method `getInstance()` is a supplier of the `ColoredShape` instance. The `constructor`
-is first called to create the class, the `ClassPathXmlApplicationContext` then parses the XML to
-configure the _bean_.
+An instance method `getInstance()` is a supplier of the `ColoredShape` instance.
+The `constructor`
+is first called to create the class, the `ClassPathXmlApplicationContext` then parses the XML to configure the _bean_.
 
 2. Here is the configuration for this Spring class +
 ⇒ link:../../ch01_spring-inversion-of-control/src/main/resources/ex03-instantiation-through-instance-factory.xml[ex03-instantiation-through-instance-factory.xml]. +
-The `bean` is declared with a `factory-bean` which determines that there is a `bean` that has an
-instance `factory-method`.
+The `bean` is declared with a `factory-bean` which determines that there is a `bean` that has an instance `factory-method`.
 
-3. Notice how the instance factory method from `Ex03_InstantiationThroughInstanceFactory` is used
-to configure the properties. The `Ex03_InstantiationThroughInstanceFactory` class is first
-constructed via a default constructor, then the instance factory method is invoked to configure
-the bean. A simple System.out.println() was added to show the loading of the class.
+3. Notice how the instance factory method from `Ex03_InstantiationThroughInstanceFactory` is used to configure the properties.
+The `Ex03_InstantiationThroughInstanceFactory` class is first constructed via a default constructor, then the instance factory method is invoked to configure the bean.
+A simple System.out.println() was added to show the loading of the class.
 
 .Output
 ****
@@ -131,16 +128,16 @@ the bean. A simple System.out.println() was added to show the loading of the cla
 
 == Exercise Lab
 
-image:../../../assets/images/labtime.png[Lab, align="center"]
+image:../../../assets/images/labtime.png[Lab,align="center"]
 
-The lab exercise is to fix the broken tests. Follow the instructions to fix the TODOs to get the
-JUnit test to pass.
+The lab exercise is to fix the broken tests.
+Follow the instructions to fix the TODOs to get the JUnit test to pass.
 
 ⇒ link:../../ch01_spring-inversion-of-control/src/test/java/bnymellon/training/spring/framework/Lab01Test.java[Lab01Test.java].
 
 '''
 
-[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+[width=100%,cols="<10%,^80%,>10%",grid=none,frame=ends]
 |===
 | Prev | TOC | Next
 

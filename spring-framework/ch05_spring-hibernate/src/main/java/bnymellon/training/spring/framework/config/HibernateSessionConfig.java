@@ -16,9 +16,6 @@
 
 package bnymellon.training.spring.framework.config;
 
-import javax.sql.DataSource;
-import java.util.Properties;
-
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AvailableSettings;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +30,12 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.sql.DataSource;
+import java.util.Properties;
+
 @Configuration
 @EnableTransactionManagement
-@PropertySource(value = { "classpath:application.properties" })
+@PropertySource(value = {"classpath:application.properties"})
 public class HibernateSessionConfig {
 
     @Autowired
@@ -100,7 +100,7 @@ public class HibernateSessionConfig {
 
         sessionFactory.setDataSource(getDataSource());
         sessionFactory.setPackagesToScan(
-                new String[] { "bnymellon.training.spring.framework.model" });
+                new String[]{"bnymellon.training.spring.framework.model"});
         sessionFactory.setHibernateProperties(getHibernateProperties());
 
         return sessionFactory;

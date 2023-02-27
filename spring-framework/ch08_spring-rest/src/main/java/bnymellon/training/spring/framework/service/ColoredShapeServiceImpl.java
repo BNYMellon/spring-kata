@@ -16,15 +16,14 @@
 
 package bnymellon.training.spring.framework.service;
 
-import java.util.Collections;
-import java.util.List;
-
+import bnymellon.training.spring.framework.dao.ColoredShapeDao;
+import bnymellon.training.spring.framework.model.ColoredShape;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import bnymellon.training.spring.framework.dao.ColoredShapeDao;
-import bnymellon.training.spring.framework.model.ColoredShape;
+import java.util.Collections;
+import java.util.List;
 
 @Service
 @Transactional(readOnly = true)

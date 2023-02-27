@@ -16,13 +16,12 @@
 
 package bnymellon.training.spring.framework;
 
-import java.util.List;
-
+import bnymellon.training.spring.framework.dao.ColoredShapeDao;
+import bnymellon.training.spring.framework.model.ColoredShape;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import bnymellon.training.spring.framework.dao.ColoredShapeDao;
-import bnymellon.training.spring.framework.model.ColoredShape;
+import java.util.List;
 
 public class Ex01_DB_XMLConfigured {
 

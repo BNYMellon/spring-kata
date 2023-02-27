@@ -16,7 +16,6 @@
 
 package bnymellon.training.spring.boot.todo.service;
 
-import bnymellon.training.spring.boot.todo.TodoConstants;
 import bnymellon.training.spring.boot.todo.dao.TodoRepository;
 import bnymellon.training.spring.boot.todo.model.Todo;
 import bnymellon.training.spring.boot.todo.model.exception.InvalidAssigneeException;
@@ -32,9 +31,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;

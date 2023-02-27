@@ -17,11 +17,11 @@
 
 <dataset>
     <!-- NOTE: The activeFlag maps to a column of a different name: ACTIVE. This is done on purpose. -->
-    <TODO id="1" name="CodeTodo" assignee="XXX1111" due="2017-01-01" notes="Note 1" active="false" />
-    <TODO id="2" name="HRTodo" assignee="ABC1234" due="2017-12-01" notes="Salary increment" active="true" />
-    <TODO id="3" name="PersonalTodo" assignee="XXX1111" due="2017-03-03" notes="Personal Note 1" active="false" />
-    <TODO id="4" name="CodeTodo" assignee="XYZ9876" due="2017-02-02" notes="A Note" active="false" />
-    <TODO id="5" name="CodeTodo" assignee="XXX1111" due="2017-04-04" notes="Fix broken build" active="true" />
-    <TODO id="6" name="HRTodo" assignee="ABC1234" due="2017-07-07" notes="Send hire offer" active="true" />
-    <TODO id="7" name="CodeTodo" assignee="XYZ9876" due="2017-06-06" notes="Remove commented code" active="true" />
+    <TODO id="1" name="CodeTodo" assignee="XXX1111" due="2017-01-01" notes="Note 1" active="false"/>
+    <TODO id="2" name="HRTodo" assignee="ABC1234" due="2017-12-01" notes="Salary increment" active="true"/>
+    <TODO id="3" name="PersonalTodo" assignee="XXX1111" due="2017-03-03" notes="Personal Note 1" active="false"/>
+    <TODO id="4" name="CodeTodo" assignee="XYZ9876" due="2017-02-02" notes="A Note" active="false"/>
+    <TODO id="5" name="CodeTodo" assignee="XXX1111" due="2017-04-04" notes="Fix broken build" active="true"/>
+    <TODO id="6" name="HRTodo" assignee="ABC1234" due="2017-07-07" notes="Send hire offer" active="true"/>
+    <TODO id="7" name="CodeTodo" assignee="XYZ9876" due="2017-06-06" notes="Remove commented code" active="true"/>
 </dataset>

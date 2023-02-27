@@ -15,18 +15,21 @@
 ////
 :img-build-status: https://github.com/BNYMellon/spring-kata/workflows/Spring%20Katas%20CI%20Build/badge.svg?branch=main
 :uri-build-status: https://github.com/BNYMellon/spring-kata/actions?query=workflow%3A%22Spring+Katas+CI+Build%22
+
 image:{img-build-status}[Build Status,link={uri-build-status}]
 
 = What is the spring-course?
 
-The Spring course consists of two related tutorials that teach developers about Spring Framework and then Spring Boot. The courses lay out examples that are discussed via documentation, located under the `assets\docs` directory.
+The Spring course consists of two related tutorials that teach developers about Spring Framework and then Spring Boot.
+The courses lay out examples that are discussed via documentation, located under the `assets\docs` directory.
 
 The best way to take this course is to checkout the entire project locally, then view:
 
 * link:spring-framework/README.adoc[*Spring Framework Docs*]: for the Spring Framework tutorial
 * link:spring-boot/README.adoc[*Spring Boot Docs*]: for a Spring Boot tutorial.
 
-The courses are fairly independent, someone who knows Spring framework well, need only visit the Spring Boot tutorial to get up to speed. However, it is worth hitting a refresher and going through the Spring Framework content (even if solving the exercises is not attempted).
+The courses are fairly independent, someone who knows Spring framework well, need only visit the Spring Boot tutorial to get up to speed.
+However, it is worth hitting a refresher and going through the Spring Framework content (even if solving the exercises is not attempted).
 
 == Notes about the presentation:
 

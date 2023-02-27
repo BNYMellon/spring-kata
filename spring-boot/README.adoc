@@ -65,11 +65,11 @@ This tutorial will cover:
 
 === Setting up in an IDE
 
-The project can be loaded into an IDE as a single structure. Setup the project as:
+The project can be loaded into an IDE as a single structure.
+Setup the project as:
 
 . Set up your IDE to use JDK 11 or above
-. Import or open the project from the link:../spring-boot/todo/pom.xml[pom.xml] under the
-Spring Boot todo directory.
+. Import or open the project from the link:../spring-boot/todo/pom.xml[pom.xml] under the Spring Boot todo directory.
 
 '''
 

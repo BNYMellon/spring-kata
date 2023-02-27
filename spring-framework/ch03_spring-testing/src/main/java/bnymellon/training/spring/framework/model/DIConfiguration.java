@@ -31,16 +31,14 @@ public class DIConfiguration {
         return new ColoredShape("teal", "trapezoid");
     }
 
-    @Bean ("tealTrapezoidHolder")
+    @Bean("tealTrapezoidHolder")
     @Qualifier("tealTrapezoidHolder")
     public ColoredShapeHolder myColoredShapeHolder() {
         return new ColoredShapeHolder(myColoredShape(), 10);
     }
 
 
-
-
-    @Bean ("pinkPolygonHolder")
+    @Bean("pinkPolygonHolder")
     @Qualifier("pinkPolygonHolder")
     public ColoredShapeHolder mySecondColoredShapeHolder() {
         return new ColoredShapeHolder(new ColoredShape("pink", "polygon"), 7);

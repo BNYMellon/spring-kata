@@ -16,9 +16,9 @@
 
 package bnymellon.training.spring.framework.service;
 
-import java.util.List;
-
 import bnymellon.training.spring.framework.model.ColoredShape;
+
+import java.util.List;
 
 public interface ColoredShapeService {
 

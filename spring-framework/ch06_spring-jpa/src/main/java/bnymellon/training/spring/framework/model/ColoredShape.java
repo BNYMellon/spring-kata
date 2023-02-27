@@ -16,12 +16,7 @@
 
 package bnymellon.training.spring.framework.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -84,7 +79,7 @@ public class ColoredShape implements Serializable {
     }
 
     public String toString() {
-        return "ID: [" + id + "]: Color: [" + color + "], Shape: [" + shape +"]";
+        return "ID: [" + id + "]: Color: [" + color + "], Shape: [" + shape + "]";
     }
 
     @Override

@@ -28,12 +28,12 @@
 
 
     <logger name="bnymellon.training.spring" additivity="false">
-        <level value="DEBUG" />
-        <appender-ref ref="consoleAppender" />
+        <level value="DEBUG"/>
+        <appender-ref ref="consoleAppender"/>
     </logger>
 
     <root>
-        <level value="INFO" />
-        <appender-ref ref="consoleAppender" />
+        <level value="INFO"/>
+        <appender-ref ref="consoleAppender"/>
     </root>
 </configuration>

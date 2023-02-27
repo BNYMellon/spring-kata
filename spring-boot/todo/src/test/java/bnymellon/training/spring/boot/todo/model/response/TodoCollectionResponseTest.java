@@ -16,11 +16,11 @@
 
 package bnymellon.training.spring.boot.todo.model.response;
 
-import java.util.Collections;
-
 import bnymellon.training.spring.boot.todo.model.Todo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;

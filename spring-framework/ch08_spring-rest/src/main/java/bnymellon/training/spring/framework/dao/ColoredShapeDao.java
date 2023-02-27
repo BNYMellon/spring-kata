@@ -16,9 +16,8 @@
 
 package bnymellon.training.spring.framework.dao;
 
-import org.springframework.data.repository.CrudRepository;
-
 import bnymellon.training.spring.framework.model.ColoredShape;
+import org.springframework.data.repository.CrudRepository;
 
 // No implementation !!! Only interface.
 

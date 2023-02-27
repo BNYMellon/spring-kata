@@ -16,34 +16,20 @@
 
 package bnymellon.training.spring.boot.todo.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-
-import bnymellon.training.spring.boot.todo.model.response.TodoResponse;
-import bnymellon.training.spring.boot.todo.model.response.TodoSuccessResponse;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-
 import bnymellon.training.spring.boot.todo.model.Todo;
 import bnymellon.training.spring.boot.todo.model.response.TodoCollectionResponse;
 import bnymellon.training.spring.boot.todo.model.response.TodoErrorResponse;
+import bnymellon.training.spring.boot.todo.model.response.TodoResponse;
+import bnymellon.training.spring.boot.todo.model.response.TodoSuccessResponse;
+import io.swagger.annotations.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import static org.springframework.http.MediaType.ALL_VALUE;
-import static org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VALUE;
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
+import static org.springframework.http.MediaType.*;
 
 @Api(
         tags = {"todo-service"}
@@ -73,7 +59,7 @@ public interface TodoAPIContract {
     ResponseEntity<TodoResponse> addTodo(
             @ApiParam(required = true, value = "A todo record to add")
             @Valid @RequestBody
-                    Todo todo,
+            Todo todo,
             HttpServletRequest request);
 
     //--------------------------------------------------------------------------------------------
@@ -95,7 +81,7 @@ public interface TodoAPIContract {
     )
     ResponseEntity<TodoResponse> getTodos(
             @ApiParam(name = "includeInactive", value = "Fetch inactive todos, if true", defaultValue = "false")
-                    Boolean includeInactive,
+            Boolean includeInactive,
             HttpServletRequest request);
 
     //--------------------------------------------------------------------------------------------
@@ -120,7 +106,7 @@ public interface TodoAPIContract {
     ResponseEntity<TodoResponse> getTodosByAssignee(
             @ApiParam(required = true, value = "Assignee associated with the todo records")
             @PathVariable(value = "assignee")
-                    String assignee,
+            String assignee,
             HttpServletRequest request);
 
     //--------------------------------------------------------------------------------------------
@@ -145,7 +131,7 @@ public interface TodoAPIContract {
     ResponseEntity<TodoResponse> getTodo(
             @ApiParam(required = true, value = "TodoId representing the todo record")
             @PathVariable(value = "todoId")
-                    String todoId,
+            String todoId,
             HttpServletRequest request);
 
     //--------------------------------------------------------------------------------------------
@@ -171,7 +157,7 @@ public interface TodoAPIContract {
     )
     ResponseEntity<TodoResponse> updateTodo(
             @ApiParam(required = true, value = "TodoId representing the todo record") @PathVariable(value = "todoId")
-                    String todoId,
+            String todoId,
             @ApiParam(required = true, value = "A todo record to update") @Valid @RequestBody Todo todo,
             HttpServletRequest request);
 
@@ -197,6 +183,6 @@ public interface TodoAPIContract {
     )
     ResponseEntity<TodoResponse> deleteTodo(
             @ApiParam(required = true, value = "TodoId representing the todo record") @PathVariable("todoId")
-                    String todoId,
+            String todoId,
             HttpServletRequest request);
 }

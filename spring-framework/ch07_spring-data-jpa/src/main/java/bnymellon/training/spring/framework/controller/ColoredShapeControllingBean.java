@@ -16,13 +16,12 @@
 
 package bnymellon.training.spring.framework.controller;
 
+import bnymellon.training.spring.framework.model.ColoredShape;
+import bnymellon.training.spring.framework.service.ColoredShapeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import bnymellon.training.spring.framework.model.ColoredShape;
-import bnymellon.training.spring.framework.service.ColoredShapeService;
 
 @Component
 public class ColoredShapeControllingBean {

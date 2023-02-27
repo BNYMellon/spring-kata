@@ -59,7 +59,7 @@ As the course progresses, each lab will aim at creating an outcome, parallel to,
 
 == Exercise Lab
 
-image:../../../assets/images/labtime.png[Lab, align="center"]
+image:../../../assets/images/labtime.png[Lab,align="center"]
 
 . Use one of the earlier mentioned ways to create a Spring Boot project.
 . Use the settings:
@@ -94,7 +94,7 @@ link:https://start.spring.io/#!type=maven-project&language=java&platformVersion=
 
 '''
 
-[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+[width=100%,cols="<10%,^80%,>10%",grid=none,frame=ends]
 |===
 | Prev | TOC | Next
 

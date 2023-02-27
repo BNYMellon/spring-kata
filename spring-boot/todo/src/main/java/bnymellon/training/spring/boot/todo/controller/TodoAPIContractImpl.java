@@ -16,42 +16,24 @@
 
 package bnymellon.training.spring.boot.todo.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-
+import bnymellon.training.spring.boot.todo.model.Todo;
 import bnymellon.training.spring.boot.todo.model.exception.InvalidAssigneeException;
-import bnymellon.training.spring.boot.todo.model.response.Issue;
-import bnymellon.training.spring.boot.todo.model.response.TodoErrorResponse;
-import bnymellon.training.spring.boot.todo.model.response.TodoResponse;
-import bnymellon.training.spring.boot.todo.model.response.TodoSuccessResponse;
+import bnymellon.training.spring.boot.todo.model.exception.InvalidIdException;
+import bnymellon.training.spring.boot.todo.model.exception.TodoNotFoundException;
+import bnymellon.training.spring.boot.todo.model.response.*;
+import bnymellon.training.spring.boot.todo.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import bnymellon.training.spring.boot.todo.model.Todo;
-import bnymellon.training.spring.boot.todo.model.exception.InvalidIdException;
-import bnymellon.training.spring.boot.todo.model.exception.TodoNotFoundException;
-import bnymellon.training.spring.boot.todo.model.response.Metadata;
-import bnymellon.training.spring.boot.todo.model.response.Status;
-import bnymellon.training.spring.boot.todo.model.response.TodoCollectionResponse;
-import bnymellon.training.spring.boot.todo.service.TodoService;
-
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.time.Instant;
 import java.util.Collections;
 import java.util.UUID;
 
-import static org.springframework.http.MediaType.ALL_VALUE;
-import static org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VALUE;
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.http.MediaType.*;
 
 @RestController
 @RequestMapping("/todos")
@@ -100,7 +82,7 @@ public class TodoAPIContractImpl implements TodoAPIContract {
     )
     public ResponseEntity<TodoResponse> getTodos(
             @RequestParam(name = "includeInactive", required = false, defaultValue = "false")
-                    Boolean includeInactive,
+            Boolean includeInactive,
             HttpServletRequest request) {
 
         TodoCollectionResponse response = new TodoCollectionResponse();
@@ -122,7 +104,7 @@ public class TodoAPIContractImpl implements TodoAPIContract {
     )
     public ResponseEntity<TodoResponse> getTodosByAssignee(
             @PathVariable(value = "assignee")
-                    String assignee,
+            String assignee,
             HttpServletRequest request) {
 
 
@@ -144,7 +126,7 @@ public class TodoAPIContractImpl implements TodoAPIContract {
     )
     public ResponseEntity<TodoResponse> getTodo(
             @PathVariable(value = "todoId")
-                    String todoId,
+            String todoId,
             HttpServletRequest request) {
 
         // Convert the String to a Long.
@@ -171,7 +153,7 @@ public class TodoAPIContractImpl implements TodoAPIContract {
     )
     public ResponseEntity<TodoResponse> updateTodo(
             @PathVariable(value = "todoId")
-                    String todoId,
+            String todoId,
             @Valid @RequestBody Todo todo,
             HttpServletRequest request) throws InvalidIdException, TodoNotFoundException {
 
@@ -198,7 +180,7 @@ public class TodoAPIContractImpl implements TodoAPIContract {
     )
     public ResponseEntity<TodoResponse> deleteTodo(
             @PathVariable("todoId")
-                    String todoId,
+            String todoId,
             HttpServletRequest request) {
 
         // Convert the String to a Long.

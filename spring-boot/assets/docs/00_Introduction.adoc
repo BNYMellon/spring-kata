@@ -21,8 +21,7 @@ Spring App Development Made Easy
 
 == Why Spring Boot exists
 
-Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that
-you can “just run”.
+Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can “just run”.
 
 * Most Spring Boot applications need very little Spring configuration.
 
@@ -40,54 +39,53 @@ image:../images/basic-spring-boot.png[SpringBoot]
 
 Spring Boot is typically composed of:
 
-Spring Boot Auto-Configure:: a module to auto-configure a wide range of Spring projects. It detects
-the availability of certain frameworks (Spring Batch, Spring Data JPA, Hibernate, JDBC).
-When a framework library is detected, Spring Boot attempts to auto-configure the found framework
-with some sensible defaults.
+Spring Boot Auto-Configure:: a module to auto-configure a wide range of Spring projects.
+It detects the availability of certain frameworks (Spring Batch, Spring Data JPA, Hibernate, JDBC).
+When a framework library is detected, Spring Boot attempts to auto-configure the found framework with some sensible defaults.
 
 Spring Boot CLI:: command line interface to start/stop Spring Boot applications.
 
-Spring Boot Starters:: quick start projects to include as a dependency in the build file. Starter
-packs have the necessary dependencies for that type of application.
+Spring Boot Starters:: quick start projects to include as a dependency in the build file.
+Starter packs have the necessary dependencies for that type of application.
 
-Spring Cloud:: consist of starter packs and modules that help with microservices, cloud native
-applications and metrics.
+Spring Cloud:: consist of starter packs and modules that help with microservices, cloud native applications and metrics.
 
 '''
 
 === Spring Boot - Philosophy
 
-Spring Boot is an opinionated framework that works with a convention-over-configuration
-approach. Spring Boot produces an executable binary **J**ava **AR**chive (jar file) that is quite
-different in structure and content, when compared to normal library jar files.
+Spring Boot is an opinionated framework that works with a convention-over-configuration approach.
+Spring Boot produces an executable binary **J**ava **AR**chive (jar file) that is quite different in structure and content, when compared to normal library jar files.
 
 Spring boot includes a maven plugin that produces what is referred to as an *uber jar*.
-The uber jar is a jar file that not only bundles the compiled java classes but also all
-dependencies required to run the application.
+The uber jar is a jar file that not only bundles the compiled java classes but also all dependencies required to run the application.
 
 ==== "Make JAR Not WAR"
 
-Contrary to popular historical choices, Spring boot applications are better produced as a jar
-file rather than a war file.
+Contrary to popular historical choices, Spring boot applications are better produced as a jar file rather than a war file.
 
 ===== .war files
-A war (**W**eb **AR**chive) file has historically been the typical
-deployable artifact for web applications. The WAR file typically was copied into the a *web server*
-and would get expanded in the web server location. To launch an WAR file, the containing
+
+A war (**W**eb **AR**chive) file has historically been the typical deployable artifact for web applications.
+The WAR file typically was copied into the a *web server*
+and would get expanded in the web server location.
+To launch an WAR file, the containing
 *web server* would need to be launched*.
 
 ===== Spring Boot Uber Jar
-A Spring Boot *Uber* JAR (**J**ava **AR**chive) file is Spring Boot's response to avoiding the
-creation of a .war file. The Spring Boot uber jar is different from a typical library jar file. This
-*uber jar* contains a Spring Boot launcher, an embedded *web server* and a packaging of all
-dependencies needed by the application logic.
+
+A Spring Boot *Uber* JAR (**J**ava **AR**chive) file is Spring Boot's response to avoiding the creation of a .war file.
+The Spring Boot uber jar is different from a typical library jar file.
+This
+*uber jar* contains a Spring Boot launcher, an embedded *web server* and a packaging of all dependencies needed by the application logic.
 
 '''
 
 === Spring Boot - How it works
 
-Building a Spring Boot application results in the creation of an *uber jar*. This uber jar has a
-few elements. Important to note:
+Building a Spring Boot application results in the creation of an *uber jar*.
+This uber jar has a few elements.
+Important to note:
 
 ==== What is in a built uber jar
 
@@ -110,27 +108,20 @@ few elements. Important to note:
 
 ----
 
-
 ==== Explanation of uber jar contents
 
-Boot Loader classes:: packaged under *`org.springframework.boot.loader`*, these classes act as a
-launcher for the Spring Boot application.
+Boot Loader classes:: packaged under *`org.springframework.boot.loader`*, these classes act as a launcher for the Spring Boot application.
 
-Manifest instructions:: located at the *`META-INF/MANIFEST.MF`*, this file contains details such as
-the version of Spring Boot used to build this jar, the main class to run, location of the
-dependency libraries (`BOOT-INF/lib`, by default) and the location of the classes and resources
-for the application (`BOOT-INF/classes`, by default).
+Manifest instructions:: located at the *`META-INF/MANIFEST.MF`*, this file contains details such as the version of Spring Boot used to build this jar, the main class to run, location of the dependency libraries (`BOOT-INF/lib`, by default) and the location of the classes and resources for the application (`BOOT-INF/classes`, by default).
 
-Application classes and resources:: default location is under *`BOOT-INF/classes`*, these classes
-and resources hold the compiled logic and configurations for the application.
+Application classes and resources:: default location is under *`BOOT-INF/classes`*, these classes and resources hold the compiled logic and configurations for the application.
 
-Application dependency libraries:: default location is under *`BOOT-INF/lib`*, the directory
-structure contains all dependency libraries required to launch and execute the Spring Boot App.
+Application dependency libraries:: default location is under *`BOOT-INF/lib`*, the directory structure contains all dependency libraries required to launch and execute the Spring Boot App.
 
 
 '''
 
-[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+[width=100%,cols="<10%,^80%,>10%",grid=none,frame=ends]
 |===
 | Prev | TOC | Next
 

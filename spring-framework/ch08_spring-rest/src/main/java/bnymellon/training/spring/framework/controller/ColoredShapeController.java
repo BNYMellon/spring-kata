@@ -16,26 +16,19 @@
 
 package bnymellon.training.spring.framework.controller;
 
-import java.util.List;
-
+import bnymellon.training.spring.framework.model.ColoredShape;
+import bnymellon.training.spring.framework.service.ColoredShapeService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-
-import bnymellon.training.spring.framework.model.ColoredShape;
-import bnymellon.training.spring.framework.service.ColoredShapeService;
+import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VALUE;
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
@@ -81,15 +74,15 @@ public class ColoredShapeController {
         return coloredShapeService.getColoredShape(id);
     }
 
-    @RequestMapping( method = RequestMethod.GET )
+    @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public List< ColoredShape > findAll(){
+    public List<ColoredShape> findAll() {
         return coloredShapeService.findAll();
     }
 
-    @RequestMapping( value = "/{id}", method = RequestMethod.PUT )
-    @ResponseStatus( HttpStatus.OK )
-    public void updateColoredShape(@PathVariable( "id" ) Long id, @RequestBody ColoredShape coloredShape) {
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void updateColoredShape(@PathVariable("id") Long id, @RequestBody ColoredShape coloredShape) {
         ColoredShape existingColoredShape = coloredShapeService.getColoredShape(id);
         existingColoredShape.setColor(coloredShape.getColor());
         existingColoredShape.setShape(coloredShape.getShape());

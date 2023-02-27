@@ -18,10 +18,13 @@
 :toclevels: 4
 
 == Overview
-Spring is an application framework. The framework itself comprises several modules building on a
+
+Spring is an application framework.
+The framework itself comprises several modules building on a
 `spring-core` library.
 
 === Inversion of Control (IoC)
+
 Spring provides for object instantiation through any of:
 
 - constructor
@@ -29,6 +32,7 @@ Spring provides for object instantiation through any of:
 - instance factory
 
 === Dependency Injection (DI)
+
 Spring provides dependency injection through any of:
 
 - XML
@@ -68,9 +72,12 @@ possible to override the built-in singleton and prototype scopes.
 NOTE: Under most normal situations, spring beans default of singleton suffices.
 
 === Coparing Spring annotations to Standard JSR-330 annotations
-Spring offers support for link:https://jcp.org/en/jsr/detail?id=330[JSR-330, https://jcp.org/en/jsr/detail?id=330] standard annotations (Dependency Injection). JSR-330 is a
-*Java Specification Request* for Dependency Injection standards. It provides annotations similar
-to what Spring has for dependency injection. Spring is compatible with JSR-330 annotations.
+
+Spring offers support for link:https://jcp.org/en/jsr/detail?id=330[JSR-330,https://jcp.org/en/jsr/detail?id=330] standard annotations (Dependency Injection).
+JSR-330 is a
+*Java Specification Request* for Dependency Injection standards.
+It provides annotations similar to what Spring has for dependency injection.
+Spring is compatible with JSR-330 annotations.
 
 Spring JSR-330 Notes
 
@@ -100,7 +107,7 @@ Spring’s @Autowired or with non-annotated constructors and setter methods.
 
 '''
 
-[width=100%, cols="<10%,^80%,>10%",grid=none,frame=ends]
+[width=100%,cols="<10%,^80%,>10%",grid=none,frame=ends]
 |===
 | Prev | TOC | Next
 

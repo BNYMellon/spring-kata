@@ -28,7 +28,7 @@
 
     <name>Spring Training - Aggregator POM</name>
     <description>Aggregator POM for the Spring Katas</description>
-    
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 

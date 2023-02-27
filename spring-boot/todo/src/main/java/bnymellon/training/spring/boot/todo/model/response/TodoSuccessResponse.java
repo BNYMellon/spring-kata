@@ -16,12 +16,11 @@
 
 package bnymellon.training.spring.boot.todo.model.response;
 
+import bnymellon.training.spring.boot.todo.model.Todo;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
-
-import bnymellon.training.spring.boot.todo.model.Todo;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
