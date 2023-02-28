@@ -40,18 +40,4 @@
 
     </bean>
 
-    <bean id="vehiclebean" class="bnymellon.training.spring.framework.model.Vehicle">
-
-        <property name="type" value="pickup"/>
-        <property name="year" value="2016"/>
-
-    </bean>
-
-    <bean id="bulkvehicle" class="bnymellon.training.spring.framework.model.BulkVehicleOrder">
-
-        <property name="vehicle" ref="vehiclebean"/>
-        <property name="quantity" value="7"/>
-
-    </bean>
-
 </beans>

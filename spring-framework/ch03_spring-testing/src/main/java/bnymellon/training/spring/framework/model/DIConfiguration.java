@@ -23,7 +23,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 //CoponentScan is optional and only required if there are other components that depend on, or are depended by this configuration.
-@ComponentScan(basePackages = {"bnymellon.training.spring.framework.model"})
+@ComponentScan(basePackages = {"bnymellon.training.spring.framework"})
 public class DIConfiguration {
 
     @Bean(name = "tealTrapezoid")

@@ -16,9 +16,6 @@
 
 package bnymellon.training.spring.framework.model;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class Vehicle {
 
     private String type = "car";
