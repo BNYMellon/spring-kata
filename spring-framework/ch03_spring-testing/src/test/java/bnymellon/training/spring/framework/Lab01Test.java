@@ -18,10 +18,18 @@ package bnymellon.training.spring.framework;
 
 import bnymellon.training.spring.framework.model.BulkVehicleOrder;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 //TODO: Run this test with the right runner.
 //TODO: Use default XML context configuration to configure an order of 10 count of 2017 car.
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration
 public class Lab01Test {
 
     @Autowired
@@ -33,7 +41,7 @@ public class Lab01Test {
         // TODO: Add a vehicle XML bean definition with id=vehicle as a 2017 car.
         // TODO: Add a bulkVehicleOrder XML bean definition with the above vehicle and quantity of 10.
         // UNCOMMENT BELOW CODE AND TEST.
-/*
+
         assertEquals(
                 10,
                 bulkVehicleOrder.getQuantity(),
@@ -45,7 +53,7 @@ public class Lab01Test {
                 bulkVehicleOrder.getVehicle().toString(),
                 "The shape should be [2017 car]"
         );
-*/
+
     }
 
 }

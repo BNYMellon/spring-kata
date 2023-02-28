@@ -25,32 +25,19 @@
     <!-- "hint" at available annotations -->
     <context:annotation-config/>
 
-    <!-- Define a "red rhombus" shape -->
-    <bean id="redRhombusBean" class="bnymellon.training.spring.framework.model.ColoredShape">
-
-        <property name="color" value="red"/>
-        <property name="type" value="rhombus"/>
-    </bean>
-
-    <!-- INJECT the bean into the ColoredShapeHolder -->
-    <bean id="coloredShapeHolder" class="bnymellon.training.spring.framework.model.ColoredShapeHolder">
-
-        <property name="coloredShape" ref="redRhombusBean"/>
-        <property name="quantity" value="5"/>
-
-    </bean>
+    <!-- Define a "orange oval" shape -->
 
     <bean id="vehiclebean" class="bnymellon.training.spring.framework.model.Vehicle">
 
-        <property name="type" value="pickup"/>
-        <property name="year" value="2016"/>
+        <property name="type" value="car"/>
+        <property name="year" value="2017"/>
 
     </bean>
 
     <bean id="bulkvehicle" class="bnymellon.training.spring.framework.model.BulkVehicleOrder">
 
         <property name="vehicle" ref="vehiclebean"/>
-        <property name="quantity" value="7"/>
+        <property name="quantity" value="10"/>
 
     </bean>
 
