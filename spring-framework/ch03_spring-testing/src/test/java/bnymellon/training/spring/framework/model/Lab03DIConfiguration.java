@@ -16,13 +16,31 @@
 
 package bnymellon.training.spring.framework.model;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
 //TODO: Ensure that this Configuration is stereotyped.
+@Configuration
+@ComponentScan(basePackages = {"bnymellon.training.spring.framework.model"})
 public class Lab03DIConfiguration {
 
     //TODO: Create a bean each for:
 
     // twoPlane2016Order
 
+    @Bean("twoPlane2016Order")
+    @Qualifier("twoPlane2016Order")
+    public BulkVehicleOrder myBulkVehicle() {
+        return new BulkVehicleOrder(new Vehicle("plane", 2016), 2);
+    }
+
+    @Bean("sixFlatbed2017Order")
+    @Qualifier("sixFlatbed2017Order")
+    public BulkVehicleOrder myOtherVehicle() {
+        return new BulkVehicleOrder(new Vehicle("flatbed", 2017), 6);
+    }
     // sixFlatbed2017Order
 
     // TODO: Add qualifiers.
