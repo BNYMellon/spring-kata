@@ -15,14 +15,14 @@
   -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <!-- G-A-V coordinates for our application build artifact -->
     <groupId>bnymellon.training.spring.framework</groupId>
     <artifactId>spring-framework</artifactId>
-    <version>1.0.0</version>
+    <version>2.0.0</version>
 
     <!-- Instruction to hint that we are producing a jar file -->
     <packaging>pom</packaging>
@@ -33,19 +33,26 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- The properties below ensure that the code is picked up and compiled as Java 11 -->
-        <java.version>11</java.version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <!-- The properties below ensure that the code is picked up and compiled as Java 17 -->
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
 
-        <spring-framework.version>5.3.3</spring-framework.version>
-        <junit5.version>5.7.0</junit5.version>
-        <logback.version>1.1.11</logback.version>
+        <spring-framework.version>6.0.8</spring-framework.version>
+        <spring-data.jpa>3.0.5</spring-data.jpa>
 
-        <h2-database.version>1.4.200</h2-database.version>
-        <hibernate.version>5.2.10.Final</hibernate.version>
-        <jcl-over-slf4j.version>1.7.24</jcl-over-slf4j.version>
+        <junit5.version>5.9.3</junit5.version>
 
+        <logback.version>1.4.6</logback.version>
+
+        <h2-database.version>2.1.214</h2-database.version>
+        <hibernate.version>6.1.7.Final</hibernate.version>
+        <jcl-over-slf4j.version>2.0.5</jcl-over-slf4j.version>
+
+        <jackson.version>2.4.0</jackson.version>
+        <jaxb-api.version>4.0.0</jaxb-api.version>
+
+        <swagger2.version>2.6.0</swagger2.version>
     </properties>
 
     <modules>
@@ -64,26 +71,34 @@
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter</artifactId>
-                <version>5.7.0</version>
+                <version>${junit5.version}</version>
                 <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>jakarta.persistence</groupId>
+                <artifactId>jakarta.persistence-api</artifactId>
+                <version>3.1.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-            </plugin>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.11.0</version>
+                </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
-            </plugin>
-        </plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.22.2</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
 </project>

@@ -16,7 +16,7 @@
 
 package bnymellon.training.spring.framework.config;
 
-import javax.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
