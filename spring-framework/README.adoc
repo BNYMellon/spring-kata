@@ -37,9 +37,9 @@ The project can be loaded into an IDE as a single structure.
 
 === Project pre-requisites
 
-1. JDK 11
+1. JDK 17
 2. A modern IDE (IntelliJ IDEA or Eclipse or Netbeans)
-3. Apache Maven v3.6.3 or above
+3. Apache Maven v3.8.6 or above
 
 === Project tree
 
