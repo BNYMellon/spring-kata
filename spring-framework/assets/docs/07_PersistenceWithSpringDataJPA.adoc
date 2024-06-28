@@ -28,20 +28,20 @@ This example demonstrates persistence with Hibernate and Spring Data JPA
 There are new dependencies introduced. Look for `spring-data-jpa` in the `pom.xml`.
 
 . *Config* - the class that specifies the component scanning instruction. +
-⇒ link:../../ch06_spring-jpa/src/main/java/bnymellon/training/spring/framework/config/ColoredShapeConfig.java[ColoredShapeConfig.java] +
+⇒ link:../../ch06_spring-jpa/src/main/java/bny/training/spring/framework/config/ColoredShapeConfig.java[ColoredShapeConfig.java] +
 The config class is supplied. This config class specifies the packages to be scanned for components. +
-⇒ link:../../ch06_spring-jpa/src/main/java/bnymellon/training/spring/framework/config/HibernateJPAConfig.java[HibernateJPAConfig.java] +
+⇒ link:../../ch06_spring-jpa/src/main/java/bny/training/spring/framework/config/HibernateJPAConfig.java[HibernateJPAConfig.java] +
 The class that configures the HibernateEntityManager to connect to a database.
 
 . *Controller* layer +
-⇒ link:../../ch07_spring-data-jpa/src/main/java/bnymellon/training/spring/framework/controller/ColoredShapeControllingBean.java[ColoredShapeControllingBean.java] +
+⇒ link:../../ch07_spring-data-jpa/src/main/java/bny/training/spring/framework/controller/ColoredShapeControllingBean.java[ColoredShapeControllingBean.java] +
 The class auto-wires a `ColoredShapeService` interface, the Spring context has a
 `ColoredShapeServiceImpl` that will be used as an auto-wired instance (remember the *Liskov
 Substitution Principle*). The controller invokes the service methods to persist and retrieve
 ColoredShape instances. The class is marked with a `@Component` annotation.
 
 . *Service* layer +
-⇒ link:../../ch07_spring-data-jpa/src/main/java/bnymellon/training/spring/framework/service/ColoredShapeServiceImpl.java[ColoredShapeServiceImpl.java] +
+⇒ link:../../ch07_spring-data-jpa/src/main/java/bny/training/spring/framework/service/ColoredShapeServiceImpl.java[ColoredShapeServiceImpl.java] +
 The class is marked with a `@Service` annotation. The `@Service` is an alias for the `@Component`
 annotation (see the code). It should display a `@AliasFor(annotation = Component.class)`. The
 service implementation auto-wires a `ColoredShapeDao` interface and will access the
@@ -49,7 +49,7 @@ service implementation auto-wires a `ColoredShapeDao` interface and will access 
 DAO.
 
 . *DAO* layer +
-⇒ link:../../ch07_spring-data-jpa/src/main/java/bnymellon/training/spring/framework/dao/ColoredShapeDao.java[ColoredShapeDao.java] +
+⇒ link:../../ch07_spring-data-jpa/src/main/java/bny/training/spring/framework/dao/ColoredShapeDao.java[ColoredShapeDao.java] +
 Notice the *_magic_* that no implementation was coded. Spring Data JPA _"figures out"_ the
 implementations from the method signature. The method signatures can get complex with *AND* and
 *OR* clauses. For instance, a valid method: `findOneByColorOrShape(String color, String shape)`.

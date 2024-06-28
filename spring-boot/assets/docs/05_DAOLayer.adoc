@@ -21,7 +21,7 @@ Building the *data access layer* (DAO) and its unit tests
 
 == The Repository DAO Layer
 Spring Data JPA takes care of most of the data access layer. +
-⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/dao/TodoRepository.java[TodoRepository.java]
+⇒ link:../../todo/src/main/java/bny/training/spring/boot/todo/dao/TodoRepository.java[TodoRepository.java]
 
 . Most CRUD operations are supplied by the parent interface `JpaRepository` from Spring
 (`org.springframework.data.jpa.repository` package) +
@@ -50,7 +50,7 @@ NOTE: The named query uses Java class and field names, rather than database tabl
 .. Look for `dbunit` is a dependency in the `pom.xml`.
 
 . Spring Boot test-related annotations +
-⇒ link:../../todo/src/test/java/bnymellon/training/spring/boot/todo/dao/TodoRepositoryTest.java[TodoRepositoryTest.java] +
+⇒ link:../../todo/src/test/java/bny/training/spring/boot/todo/dao/TodoRepositoryTest.java[TodoRepositoryTest.java] +
 .. The JUnit 5 `@ExtendWith` annotation is set to include the `SpringExtension` thus registering that
 this unit test is has a Spring context. +
 .. The DAO is tested with `@SpringBootTest`. This is a special annotation with Spring Boot that

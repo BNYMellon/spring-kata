@@ -63,7 +63,7 @@ This example demonstrates using a *default XML context* for testing code. This u
 the test class with a suffix of `-context.xml` under the resources.
 
 1. The JUnit test +
-⇒ link:../../ch03_spring-testing/src/test/java/bnymellon/training/spring/framework/Ex01_DefaultXMLContextConfiguration.java[Ex01_DefaultXMLContextConfiguration.java] +
+⇒ link:../../ch03_spring-testing/src/test/java/bny/training/spring/framework/Ex01_DefaultXMLContextConfiguration.java[Ex01_DefaultXMLContextConfiguration.java] +
 This class is a JUnit test marked with an annotation `@ContextConfiguration`. This annotation
 hints at looking for an XML file with the same name (and under the same package), suffixed with
 `-context.xml`. Thus running the class will cause Spring to search for a file named
@@ -71,7 +71,7 @@ hints at looking for an XML file with the same name (and under the same package)
 should it be located.
 
 2. The XML file +
-⇒ link:../../ch03_spring-testing/src/test/resources/bnymellon/training/spring/framework/Ex01_DefaultXMLContextConfiguration-context.xml[Ex01_DefaultXMLContextConfiguration-context.xml] +
+⇒ link:../../ch03_spring-testing/src/test/resources/bny/training/spring/framework/Ex01_DefaultXMLContextConfiguration-context.xml[Ex01_DefaultXMLContextConfiguration-context.xml] +
 The default context configuration file (same package, name matches the Java class and adds a `-context.xml`).
 
 The `@ContextConfiguration` without any arguments will look for an XML file in the same package
@@ -89,7 +89,7 @@ This example demonstrates using a *custom XML context* for testing code. This us
 the XML passed into as the location attribute.
 
 1. The JUnit test +
-⇒ link:../../ch03_spring-testing/src/test/java/bnymellon/training/spring/framework/Ex02_CustomXMLContextConfiguration.java[Ex02_CustomXMLContextConfiguration.java] +
+⇒ link:../../ch03_spring-testing/src/test/java/bny/training/spring/framework/Ex02_CustomXMLContextConfiguration.java[Ex02_CustomXMLContextConfiguration.java] +
 This class is a JUnit test marked with an annotation `@ContextConfiguration`. This annotation now
 includes a `locations` attribute, specifying the *XML file to load the context from*. Thus running
 the class will cause Spring to search for the file on the classpath, and load beans from the XML
@@ -113,14 +113,14 @@ This example demonstrates using a Java configuration context for testing code. T
 the context is loaded from a Java class marked with the `@Configuration` annotation.
 
 1. The JUnit test +
-⇒ link:../../ch03_spring-testing/src/test/java/bnymellon/training/spring/framework/Ex03_JavaContextConfiguration.java[Ex03_JavaContextConfiguration.java] +
+⇒ link:../../ch03_spring-testing/src/test/java/bny/training/spring/framework/Ex03_JavaContextConfiguration.java[Ex03_JavaContextConfiguration.java] +
 This class is a JUnit test marked with an annotation `@ContextConfiguration`. This annotation
 now includes a `classes` attribute, specifying the *class to load the context from*. Thus running
 the class will cause Spring to search for the file on the classpath, and load beans from the XML
 file, should it be located.
 
 2. The Configuration class +
-⇒ link:../../ch03_spring-testing/src/main/java/bnymellon/training/spring/framework/model/DIConfiguration.java[DIConfiguration.java] +
+⇒ link:../../ch03_spring-testing/src/main/java/bny/training/spring/framework/model/DIConfiguration.java[DIConfiguration.java] +
 This class is located under the *main* module and is scanned during the launch of the test code,
 and loads the beans defined in the class, into the context.
 
@@ -140,9 +140,9 @@ image:../../../assets/images/labtime.png[Lab, align="center"]
 The lab exercise is to fix the broken tests. Follow the instructions to fix the TODOs to get the
 JUnit test to pass.
 
-⇒ link:../../ch03_spring-testing/src/test/java/bnymellon/training/spring/framework/Lab01Test.java[Lab01Test.java] +
-⇒ link:../../ch03_spring-testing/src/test/java/bnymellon/training/spring/framework/Lab02Test.java[Lab02Test.java] +
-⇒ link:../../ch03_spring-testing/src/test/java/bnymellon/training/spring/framework/Lab03Test.java[Lab03Test.java]
+⇒ link:../../ch03_spring-testing/src/test/java/bny/training/spring/framework/Lab01Test.java[Lab01Test.java] +
+⇒ link:../../ch03_spring-testing/src/test/java/bny/training/spring/framework/Lab02Test.java[Lab02Test.java] +
+⇒ link:../../ch03_spring-testing/src/test/java/bny/training/spring/framework/Lab03Test.java[Lab03Test.java]
 
 
 '''

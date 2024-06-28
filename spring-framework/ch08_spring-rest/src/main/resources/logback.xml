@@ -27,7 +27,7 @@
     </appender>
 
 
-    <logger name="bnymellon.training.spring" additivity="false">
+    <logger name="bny.training.spring" additivity="false">
         <level value="DEBUG" />
         <appender-ref ref="consoleAppender" />
     </logger>

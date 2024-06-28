@@ -64,7 +64,7 @@ sections.
 .. A value for `todo.descriptiveText` is set when the *production* profile is activated.
 
 . Loading the custom configurations into the context +
-⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/config/ProfileConfigurationProperties.java[ProfileConfigurationProperties.java] +
+⇒ link:../../todo/src/main/java/bny/training/spring/boot/todo/config/ProfileConfigurationProperties.java[ProfileConfigurationProperties.java] +
 .. The `@ConfigurationProperties` sets the prefix for the properties handled by this class.
 .. The `title` and `descriptiveText` are loaded into the instance, which is also injected into
 the context, thanks to the `@Component` annotation.
@@ -87,12 +87,12 @@ While the actual Swagger documentation context is not yet covered, as a preview,
 usage of profiles in the Swagger configuration.
 
 . Default Swagger configuration +
-⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/config/TodoDefaultServiceSwaggerConfig.java[TodoDefaultServiceSwaggerConfig.java] +
+⇒ link:../../todo/src/main/java/bny/training/spring/boot/todo/config/TodoDefaultServiceSwaggerConfig.java[TodoDefaultServiceSwaggerConfig.java] +
 .. This configuration is loaded when no profile is specifically made active.
 .. The `@Profile` annotation at the class specifies that this is activated for the *default* profile.
 
 . Development Swagger configuration +
-⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/config/TodoDevelopmentServiceSwaggerConfig.java[TodoDevelopmentServiceSwaggerConfig.java] +
+⇒ link:../../todo/src/main/java/bny/training/spring/boot/todo/config/TodoDevelopmentServiceSwaggerConfig.java[TodoDevelopmentServiceSwaggerConfig.java] +
 .. This configuration is loaded when the *development* profile is made active (and the *default*
 profile is inactive).
 .. The `@Profile` annotation at the class specifies that this is activated for the *development*
@@ -100,7 +100,7 @@ profile and not when the *default* active.
 .. This configuration uses the `@Autowired` `ProfileConfigurationProperties` instance.
 
 . Production Swagger configuration +
-⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/config/TodoProductionServiceSwaggerConfig.java[TodoProductionServiceSwaggerConfig.java] +
+⇒ link:../../todo/src/main/java/bny/training/spring/boot/todo/config/TodoProductionServiceSwaggerConfig.java[TodoProductionServiceSwaggerConfig.java] +
 .. This configuration is loaded when the *production* profile is made active (and the *default*
 profile is inactive).
 .. The `@Profile` annotation at the class specifies that this is activated for the *production*
