@@ -31,7 +31,7 @@
 
 
     <!-- Define a "red rhombus" shape -->
-    <bean id="redRhombusBean" class="bnymellon.training.spring.framework.model.ColoredShape">
+    <bean id="redRhombusBean" class="bny.training.spring.framework.model.ColoredShape">
 
         <!-- note the "property" entity -->
         <property name="color" value="red"/>
@@ -39,7 +39,7 @@
     </bean>
 
     <!-- INJECT the bean into the ColoredShapeHolder -->
-    <bean id="setterAnnotatedColoredShapeHolder" class="bnymellon.training.spring.framework.model.SetterAnnotatedColoredShapeHolder">
+    <bean id="setterAnnotatedColoredShapeHolder" class="bny.training.spring.framework.model.SetterAnnotatedColoredShapeHolder">
 
         <!-- Notice the lack of referring to the ColoredShape in this bean -->
 

@@ -26,7 +26,7 @@
     <context:annotation-config/>
 
     <!-- Define a "orange oval" shape -->
-    <bean id="orangeOvalBean" class="bnymellon.training.spring.framework.model.ColoredShape">
+    <bean id="orangeOvalBean" class="bny.training.spring.framework.model.ColoredShape">
 
         <!-- Notice the new qualifier -->
         <qualifier value="aColoredShape"/>
@@ -37,7 +37,7 @@
     </bean>
 
     <!-- Define a "pink polygon" shape -->
-    <bean id="pinkPolygonBean" class="bnymellon.training.spring.framework.model.ColoredShape">
+    <bean id="pinkPolygonBean" class="bny.training.spring.framework.model.ColoredShape">
 
         <!-- Notice the new qualifier -->
         <qualifier value="thePinkPolygon"/>
@@ -48,7 +48,7 @@
     </bean>
 
     <!-- INJECT the bean into the ColoredShapeHolder -->
-    <bean id="constructorAnnotatedQualifiedColoredShapeHolder" class="bnymellon.training.spring.framework.model.ConstructorAnnotatedQualifiedColoredShapeHolder">
+    <bean id="constructorAnnotatedQualifiedColoredShapeHolder" class="bny.training.spring.framework.model.ConstructorAnnotatedQualifiedColoredShapeHolder">
 
         <!-- Notice the lack of referring to the ColoredShape in this bean -->
 

@@ -34,7 +34,7 @@ The common methods of setting up Spring boot are:
 Defaults are acceptable: Generate a Maven Project with Java 11 and Spring Boot 2.4.x
 
 . Provide a group id and artifact id: +
-*Group*: `bnymellon.training.spring.boot` +
+*Group*: `bny.training.spring.boot` +
 *Artifact*: `lab` +
 
 . Switch to using the full version of the wizard.
@@ -54,7 +54,7 @@ Defaults are acceptable (choose a Java 11 SDK). +
 → Next
 
 . Provide a group id and artifact id: +
-*Group*: `bnymellon.training.spring.boot` +
+*Group*: `bny.training.spring.boot` +
 *Artifact*: `lab` +
 → Next
 
@@ -73,9 +73,9 @@ Defaults are acceptable (choose a Java 11 SDK).
 
 . Update the fields : +
 *Name*: `lab` +
-*Group*: `bnymellon.training.spring.boot` +
+*Group*: `bny.training.spring.boot` +
 *Artifact*: `lab` +
-*Package*: `bnymellon.training.spring.boot.lab`
+*Package*: `bny.training.spring.boot.lab`
 
 . Accept / modify default location and project information. +
 → Next

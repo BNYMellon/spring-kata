@@ -1,4 +1,4 @@
-Thank you for visiting BNY Mellon's GitHub.
+Thank you for visiting BNY's GitHub.
 
 We currently do not accept external code contributions. 
 
@@ -6,4 +6,4 @@ We appreciate any potential issues or concerns reported by the community, and ma
 
 Thank you for your interest!
 
-BNY Mellon
+BNY

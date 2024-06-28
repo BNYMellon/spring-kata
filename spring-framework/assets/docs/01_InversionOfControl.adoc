@@ -29,10 +29,10 @@ Let us walk through a few examples that show how *Inversion of Control* is possi
 == Java Example without Spring
 
 1. We use a model +
-⇒ link:../../ch01_spring-inversion-of-control/src/main/java/bnymellon/training/spring/framework/model/ColoredShape.java[ColoredShape.java].
+⇒ link:../../ch01_spring-inversion-of-control/src/main/java/bny/training/spring/framework/model/ColoredShape.java[ColoredShape.java].
 
 2. A plain Java example with no spring used +
-⇒ link:../../ch01_spring-inversion-of-control/src/main/java/bnymellon/training/spring/framework/Ex00_NoFrameworkExample.java[Ex00_NoFrameworkExample.java].
+⇒ link:../../ch01_spring-inversion-of-control/src/main/java/bny/training/spring/framework/Ex00_NoFrameworkExample.java[Ex00_NoFrameworkExample.java].
 
 3. In order to produce a different color and shape, *_either_*, the command line arguments *_or_*, the java code needs to be manipulated.
 
@@ -57,10 +57,10 @@ Let us walk through a few examples that show how *Inversion of Control* is possi
 === Example 1 - Using Spring with Constructor Instantiation
 
 1. For the model, we have two model objects to look at +
-⇒ link:../../ch01_spring-inversion-of-control/src/main/java/bnymellon/training/spring/framework/model/ColoredShape.java[ColoredShape.java]
+⇒ link:../../ch01_spring-inversion-of-control/src/main/java/bny/training/spring/framework/model/ColoredShape.java[ColoredShape.java]
 
 2. Here is an example of using Spring with a constructor instantiating the value +
-⇒ link:../../ch01_spring-inversion-of-control/src/main/java/bnymellon/training/spring/framework/Ex01_InstantiationThroughConstructor.java[Ex01_InstantiationThroughConstructor.java] +
+⇒ link:../../ch01_spring-inversion-of-control/src/main/java/bny/training/spring/framework/Ex01_InstantiationThroughConstructor.java[Ex01_InstantiationThroughConstructor.java] +
 This class has a `ClassPathXmlApplicationContext` which reads the XML configuration. The
 `ApplicationContext` is the Spring Inversion of Control. The `main` method transfers control of
 loading beans to the `ClassPathXmlApplicationContext`, which then loads _beans_ from the XML file.
@@ -82,7 +82,7 @@ loading beans to the `ClassPathXmlApplicationContext`, which then loads _beans_ 
 === Example 2 - Using Spring with Static Factory Instantiation
 
 1. Here is an example of using Spring with a static factory instantiating the value +
-⇒ link:../../ch01_spring-inversion-of-control/src/main/java/bnymellon/training/spring/framework/Ex02_InstantiationThroughStaticFactory.java[Ex02_InstantiationThroughStaticFactory]. +
+⇒ link:../../ch01_spring-inversion-of-control/src/main/java/bny/training/spring/framework/Ex02_InstantiationThroughStaticFactory.java[Ex02_InstantiationThroughStaticFactory]. +
 A static method, `getInstance()` is a supplier of a `ColoredShape` instance.
 
 2. Here is the configuration for this Spring class +
@@ -104,7 +104,7 @@ configure the properties.
 === Example 3 - Using Spring with Instance Factory Instantiation
 
 1. Here is an example of using Spring with an instance factory instantiating the value +
-⇒ link:../../ch01_spring-inversion-of-control/src/main/java/bnymellon/training/spring/framework/Ex03_InstantiationThroughInstanceFactory.java[Ex03_InstantiationThroughInstanceFactory.java]. +
+⇒ link:../../ch01_spring-inversion-of-control/src/main/java/bny/training/spring/framework/Ex03_InstantiationThroughInstanceFactory.java[Ex03_InstantiationThroughInstanceFactory.java]. +
 An instance method `getInstance()` is a supplier of the `ColoredShape` instance. The `constructor`
 is first called to create the class, the `ClassPathXmlApplicationContext` then parses the XML to
 configure the _bean_.
@@ -136,7 +136,7 @@ image:../../../assets/images/labtime.png[Lab, align="center"]
 The lab exercise is to fix the broken tests. Follow the instructions to fix the TODOs to get the
 JUnit test to pass.
 
-⇒ link:../../ch01_spring-inversion-of-control/src/test/java/bnymellon/training/spring/framework/Lab01Test.java[Lab01Test.java].
+⇒ link:../../ch01_spring-inversion-of-control/src/test/java/bny/training/spring/framework/Lab01Test.java[Lab01Test.java].
 
 '''
 

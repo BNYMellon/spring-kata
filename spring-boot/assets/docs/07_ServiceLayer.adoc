@@ -33,11 +33,11 @@ The service layer:
 We use an interface-implementation model here, so we have more flexibility in autowiring and testing.
 
 . Service Interface +
-⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/service/TodoService.java[TodoService.java] +
+⇒ link:../../todo/src/main/java/bny/training/spring/boot/todo/service/TodoService.java[TodoService.java] +
 .. This interface defines all the service methods that are publicly available.
 
 . Service Implementation +
-⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/service/TodoServiceImpl.java[TodoServiceImpl.java] +
+⇒ link:../../todo/src/main/java/bny/training/spring/boot/todo/service/TodoServiceImpl.java[TodoServiceImpl.java] +
 .. The Service implementation implements all the methods listed in the Service interface.
 .. The `constructor` autowires a `TodoRepository` interface which is made available via a Spring
 context.
@@ -51,7 +51,7 @@ throw necessary custom exceptions (in this example, extending the RuntimeExcepti
 The service is tested with `@SpringBootTest`.
 
 . Test extending the abstract test setup +
-⇒ link:../../todo/src/test/java/bnymellon/training/spring/boot/todo/service/TodoServiceTest.java[TodoServiceTest.java]
+⇒ link:../../todo/src/test/java/bny/training/spring/boot/todo/service/TodoServiceTest.java[TodoServiceTest.java]
 .. The `setUp()` method runs *_before each test method_* and adds a Mock implementation of the
 repository.
 .. A Mock object wraps around the actual one, and replaces certain method calls with other

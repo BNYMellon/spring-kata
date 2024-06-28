@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2021 The Bank of New York Mellon.
+  ~ Copyright 2024 The Bank of New York Mellon.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@
 
     <!-- G-A-V coordinates for our application build artifact -->
     <parent>
-        <groupId>bnymellon.training.spring.framework</groupId>
+        <groupId>bny.training.spring.framework</groupId>
         <artifactId>spring-framework</artifactId>
         <version>2.0.0</version>
     </parent>

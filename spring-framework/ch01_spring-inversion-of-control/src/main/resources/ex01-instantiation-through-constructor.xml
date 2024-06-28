@@ -19,7 +19,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
-    <bean id="coloredShapeBean" class="bnymellon.training.spring.framework.model.ColoredShape">
+    <bean id="coloredShapeBean" class="bny.training.spring.framework.model.ColoredShape">
     </bean>
 
 </beans>

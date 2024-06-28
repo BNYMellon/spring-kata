@@ -26,16 +26,16 @@ invalid length of assignee parameter, and a todo not found use case, common in `
 and ``DELETE``s.
 
 . Invalid ID +
-⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/model/exception/InvalidIdException.java[InvalidIdException.java]
+⇒ link:../../todo/src/main/java/bny/training/spring/boot/todo/model/exception/InvalidIdException.java[InvalidIdException.java]
 
 . Invalid Assignee +
-⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/model/exception/InvalidAssigneeException.java[InvalidAssigneeException.java]
+⇒ link:../../todo/src/main/java/bny/training/spring/boot/todo/model/exception/InvalidAssigneeException.java[InvalidAssigneeException.java]
 
 . Todo Not Found +
-⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/model/exception/TodoNotFoundException.java[TodoNotFoundException.java]
+⇒ link:../../todo/src/main/java/bny/training/spring/boot/todo/model/exception/TodoNotFoundException.java[TodoNotFoundException.java]
 
 . Constants +
-⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/TodoConstants.java[TodoConstants.java]
+⇒ link:../../todo/src/main/java/bny/training/spring/boot/todo/TodoConstants.java[TodoConstants.java]
 
 '''
 

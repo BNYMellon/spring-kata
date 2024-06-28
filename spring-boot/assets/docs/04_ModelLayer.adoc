@@ -21,7 +21,7 @@ Building the model and its unit tests
 
 == The Model Layer
 The model consists of only one entity that is managed by the service. +
-⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/model/Todo.java[Todo.java] +
+⇒ link:../../todo/src/main/java/bny/training/spring/boot/todo/model/Todo.java[Todo.java] +
 
 . Mark the object as an JPA entity +
 .. Look for the `@Entity` above the class declaration.
@@ -48,7 +48,7 @@ attributes in documentation and for formatting the field ordering in a JSON outp
 
 == The Model unit test
 The model is simply a few attributes, the test focuses on the equals, hashCode and the toString. +
-⇒ link:../../todo/src/test/java/bnymellon/training/spring/boot/todo/model/TodoTest.java[TodoTest.java]
+⇒ link:../../todo/src/test/java/bny/training/spring/boot/todo/model/TodoTest.java[TodoTest.java]
 
 . There are four `Todo` instances in the test.
 . Two instances: `todo1` and `todo2` have the same content while two other instances `emptyTodo1`

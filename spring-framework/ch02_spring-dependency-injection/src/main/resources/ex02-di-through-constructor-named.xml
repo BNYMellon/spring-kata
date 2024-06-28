@@ -20,7 +20,7 @@
 	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
     <!-- Define a "red rectangle" shape (named constructor arguments) -->
-    <bean id="redRectangleBean" class="bnymellon.training.spring.framework.model.ColoredShape">
+    <bean id="redRectangleBean" class="bny.training.spring.framework.model.ColoredShape">
 
         <!-- note the "name" attribute -->
         <constructor-arg name="color" value="red"/>
@@ -28,7 +28,7 @@
     </bean>
 
     <!-- INJECT the bean into the ColoredShapeHolder -->
-    <bean id="coloredShapeHolder" class="bnymellon.training.spring.framework.model.ColoredShapeHolder">
+    <bean id="coloredShapeHolder" class="bny.training.spring.framework.model.ColoredShapeHolder">
 
         <!-- Revisit the previous exercise to see that this example uses a shorter reference style -->
         <constructor-arg name="coloredShape" ref="redRectangleBean"/>

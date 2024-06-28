@@ -20,10 +20,10 @@
 	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
     <!-- Define a default Colored shape (green circle) -->
-    <bean id="coloredShapeBean" class="bnymellon.training.spring.framework.model.ColoredShape"/>
+    <bean id="coloredShapeBean" class="bny.training.spring.framework.model.ColoredShape"/>
 
     <!-- INJECT the default bean into the ColoredShapeHolder -->
-    <bean id="coloredShapeHolder" class="bnymellon.training.spring.framework.model.ColoredShapeHolder">
+    <bean id="coloredShapeHolder" class="bny.training.spring.framework.model.ColoredShapeHolder">
 
         <!-- The bean was created above, so we simply "referred" to it. -->
         <constructor-arg>

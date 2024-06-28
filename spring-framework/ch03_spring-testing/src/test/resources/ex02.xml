@@ -26,14 +26,14 @@
     <context:annotation-config/>
 
     <!-- Define a "red rhombus" shape -->
-    <bean id="redRhombusBean" class="bnymellon.training.spring.framework.model.ColoredShape">
+    <bean id="redRhombusBean" class="bny.training.spring.framework.model.ColoredShape">
 
         <property name="color" value="red"/>
         <property name="type" value="rhombus"/>
     </bean>
 
     <!-- INJECT the bean into the ColoredShapeHolder -->
-    <bean id="coloredShapeHolder" class="bnymellon.training.spring.framework.model.ColoredShapeHolder">
+    <bean id="coloredShapeHolder" class="bny.training.spring.framework.model.ColoredShapeHolder">
 
         <property name="coloredShape" ref="redRhombusBean"/>
         <property name="quantity" value="5"/>

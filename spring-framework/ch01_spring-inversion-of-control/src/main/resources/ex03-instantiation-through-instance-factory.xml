@@ -20,7 +20,7 @@
 	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
     <!-- the factory bean, which contains a method called createInstance() -->
-    <bean id="instanceFactory" class="bnymellon.training.spring.framework.Ex03_InstantiationThroughInstanceFactory">
+    <bean id="instanceFactory" class="bny.training.spring.framework.Ex03_InstantiationThroughInstanceFactory">
         <!-- inject any dependencies required by this locator bean -->
     </bean>
 

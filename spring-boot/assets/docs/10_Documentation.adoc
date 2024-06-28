@@ -27,10 +27,10 @@ contract for the API to the consumers of the service.
 The ideal location for the documentation thus is the interface.
 
 Interface +
-⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/controller/TodoAPIContract.java[TodoAPIContract.java]
+⇒ link:../../todo/src/main/java/bny/training/spring/boot/todo/controller/TodoAPIContract.java[TodoAPIContract.java]
 
 Model +
-⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/model/Todo.java[Todo.java]
+⇒ link:../../todo/src/main/java/bny/training/spring/boot/todo/model/Todo.java[Todo.java]
 
 Below is a list of annotations used to document the API.
 
@@ -55,13 +55,13 @@ meaningful document. This is done via a @Configuration class that Spring Boot lo
 As covered in the previous chapter, Swagger configurations rely on Profiles.
 
 . Default Swagger Configuration
-⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/config/TodoDefaultServiceSwaggerConfig.java[TodoDefaultServiceSwaggerConfig.java]
+⇒ link:../../todo/src/main/java/bny/training/spring/boot/todo/config/TodoDefaultServiceSwaggerConfig.java[TodoDefaultServiceSwaggerConfig.java]
 
 . Development Swagger Configuration
-⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/config/TodoDevelopmentServiceSwaggerConfig.java[TodoDevelopmentServiceSwaggerConfig.java]
+⇒ link:../../todo/src/main/java/bny/training/spring/boot/todo/config/TodoDevelopmentServiceSwaggerConfig.java[TodoDevelopmentServiceSwaggerConfig.java]
 
 . Production Swagger Configuration
-⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/config/TodoProductionServiceSwaggerConfig.java[TodoProductionServiceSwaggerConfig.java]
+⇒ link:../../todo/src/main/java/bny/training/spring/boot/todo/config/TodoProductionServiceSwaggerConfig.java[TodoProductionServiceSwaggerConfig.java]
 
 `@EnableSwagger2`:: Indicates that Swagger support should be enabled. Only functional if included
 in a class also marked as a @Configuration.
@@ -97,7 +97,7 @@ invoking consumer of the service gets a detailed information. The HTTP error cod
 important means to automate processing of responses for the service consumer.
 
 . The Contract implementation +
-⇒ link:../../todo/src/main/java/bnymellon/training/spring/boot/todo/controller/TodoAPIContractImpl.java[TodoAPIContractImpl.java]
+⇒ link:../../todo/src/main/java/bny/training/spring/boot/todo/controller/TodoAPIContractImpl.java[TodoAPIContractImpl.java]
 .. `TodoNotFoundException` - (404) Handling
 .. `InvalidIdException` - (412) Handling
 .. `InvalidAssigneeException` - (412) Handling

@@ -50,12 +50,12 @@ Creating the database tables. +
 Seeding the database table with data.
 
 . Including a new identifier attribute `id` into the `ColoredShape`. +
-⇒ link:../../ch04_spring-persistence/src/main/java/bnymellon/training/spring/framework/model/ColoredShape.java[ColoredShape.java] +
+⇒ link:../../ch04_spring-persistence/src/main/java/bny/training/spring/framework/model/ColoredShape.java[ColoredShape.java] +
 Model for the Colored Shape
 
 . Creating an interface to abstract the methods of the *Data Access Object*. Check the
 Create-Read-Update-Delete (*CRUD*) operations. +
-⇒ link:../../ch04_spring-persistence/src/main/java/bnymellon/training/spring/framework/dao/ColoredShapeDao.java[ColoredShapeDao.java] +
+⇒ link:../../ch04_spring-persistence/src/main/java/bny/training/spring/framework/dao/ColoredShapeDao.java[ColoredShapeDao.java] +
 DAO interface to communicate with the database.
 
 NOTE: Using System.out.println(...), is generally a very bad idea, it is only used here to
@@ -68,7 +68,7 @@ one, to produce a reusable test environment.
 This example demonstrates using an XML context for persistence.
 
 . The main class to run: +
-⇒ link:../../ch04_spring-persistence/src/main/java/bnymellon/training/spring/framework/Ex01_DB_XMLConfigured.java[Ex01_DB_XMLConfigured.java] +
+⇒ link:../../ch04_spring-persistence/src/main/java/bny/training/spring/framework/Ex01_DB_XMLConfigured.java[Ex01_DB_XMLConfigured.java] +
 This class loads the `spring-config.xml` using a `ClassPathXmlApplicationContext`. A
 `ColoredShapeDao` is picked from the Spring context and the CRUD calls are made via the DAO.
 
@@ -79,7 +79,7 @@ from the two SQL files. This is done via `jdbc:scripts`.
 
 . The _Data Access Object_ performs the tasks of operating with the database. The class used for
 this example implements the `ColoredShapeDao` interface. +
-⇒ link:../../ch04_spring-persistence/src/main/java/bnymellon/training/spring/framework/dao/ColoredShapeDaoImplEx01.java[ColoredShapeDaoImplEx01.java] +
+⇒ link:../../ch04_spring-persistence/src/main/java/bny/training/spring/framework/dao/ColoredShapeDaoImplEx01.java[ColoredShapeDaoImplEx01.java] +
 This class is an implementation of the `ColoredShapeDao` interface. All CRUD methods are
 implemented. The DAO implementation also defines a `RowMapper`, as a `ColoredShapeMapper`, that
 maps a `ResultSet` to a `ColoredShape` Java object. The XML config passes in the `dataSource` as a
@@ -111,20 +111,20 @@ Object (DAO), so the DAO can invoke data operations on the dataSource.
 This example demonstrates using an Java context for persistence.
 
 . The main class to run: +
-⇒ link:../../ch04_spring-persistence/src/main/java/bnymellon/training/spring/framework/Ex02_DB_JavaConfigured.java[Ex02_DB_JavaConfigured.java] +
+⇒ link:../../ch04_spring-persistence/src/main/java/bny/training/spring/framework/Ex02_DB_JavaConfigured.java[Ex02_DB_JavaConfigured.java] +
 This class loads the `@Configuration` via _ComponentScan_ using an
 `AnnotationConfigApplicationContext`. A `ColoredShapeDao` is picked from the Spring context, and the
 CRUD calls are made via the DAO.
 
 . The Java-based configuration is scanned via the `@ComponentScan`: +
-⇒ link:../../ch04_spring-persistence/src/main/java/bnymellon/training/spring/framework/model/DBConfiguration.java[DBConfiguration.java] +
+⇒ link:../../ch04_spring-persistence/src/main/java/bny/training/spring/framework/model/DBConfiguration.java[DBConfiguration.java] +
 The Java configuration declares an embedded database as a dataSource. The dataSource is an important
 bean in persistence. An autowiring of this dataSource to the Data Access Object (DAO), allows
 the DAO to invoke data operations on the dataSource.
 
 . The _Data Access Object_ performs the tasks of operating with the database. The class used for
 this example implements the `ColoredShapeDao` interface. +
-⇒ link:../../ch04_spring-persistence/src/main/java/bnymellon/training/spring/framework/dao/ColoredShapeDaoImplEx02.java[ColoredShapeDaoImplEx02.java] +
+⇒ link:../../ch04_spring-persistence/src/main/java/bny/training/spring/framework/dao/ColoredShapeDaoImplEx02.java[ColoredShapeDaoImplEx02.java] +
 This class is an implementation of the `ColoredShapeDao` interface. All CRUD methods are
 implemented. The DAO implementation also defines a `RowMapper`, as a `ColoredShapeMapper`, that
 maps a `ResultSet` to a `ColoredShape` Java object. An `@Autowired` annotation on the constructor

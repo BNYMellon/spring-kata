@@ -27,7 +27,7 @@ Spring's `MockMvc` as a framework of choice for testing the RESTful layer.
 MockMvc works by launching the application in a simulated server.
 
 . Spring Boot Web Application Test +
-⇒ link:../../todo/src/test/java/bnymellon/training/spring/boot/todo/controller/TodoAPIContractRestTest.java[TodoAPIContractRestTest.java]
+⇒ link:../../todo/src/test/java/bny/training/spring/boot/todo/controller/TodoAPIContractRestTest.java[TodoAPIContractRestTest.java]
 .. The test is still launched by extending JUnit using an `@ExtendWith` annotation and supplying a
 `SpringExtension.class`.
 .. The second class annotation declares that this test is a `@WebMvcTest`. Using this annotation
