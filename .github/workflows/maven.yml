@@ -15,18 +15,28 @@ jobs:
       matrix:
         # os: [macos-latest, ubuntu-latest, windows-latest]
         os: [ubuntu-latest]
-        java-version: [17]
+        java-version: [17, 21, 23]
 
     runs-on: ${{ matrix.os }}
 
     steps:
       - name: Git Checkout
         uses: actions/checkout@v2
-      - name: Set JDK ${{ matrix.java-version }}
+      - name: Set JDK ${{ matrix.java-version }} from jdk.java.net
+        uses: oracle-actions/setup-java@v1
+        id: download-jdk
+        with:
+          website: jdk.java.net
+          release: ${{ matrix.java-version }}
+        if: ${{matrix.java-version != 17 && matrix.java-version != 21}}
+      - name: Set JDK ${{ matrix.java-version }} from Zulu
         uses: actions/setup-java@v2
         with:
           distribution: 'zulu'
           java-version: ${{ matrix.java-version }}
+        if: ${{matrix.java-version == 17 || matrix.java-version == 21}}
+      - name: JDK Version
+        run: java --version
       - name: Enable Maven Cache
         uses: actions/cache@v2
         with:
