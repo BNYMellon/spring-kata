@@ -33,14 +33,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- Specify the Java version for the compiler plugin here -->
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <!-- Available from Java 9, setting release includes source and target (and then some) -->
-        <maven.compiler.release>11</maven.compiler.release>
+        <maven.compiler.release>17</maven.compiler.release>
 
         <!-- Specify the java version that may be used in places other than the compiler plugin -->
-        <java.version>11</java.version>
-        <jdk.version>11</jdk.version>
+        <java.version>17</java.version>
+        <jdk.version>17</jdk.version>
     </properties>
 
     <modules>
