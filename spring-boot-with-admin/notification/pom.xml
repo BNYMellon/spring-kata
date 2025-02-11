@@ -36,8 +36,11 @@
 		<maven.compiler.target>11</maven.compiler.target>
 
 		<log4j2.version>2.17.1</log4j2.version>
-		<spring-cloud.version>2021.0.0</spring-cloud.version>
-		<swagger2.version>2.6.0</swagger2.version>
+
+		<swagger2.version>3.0.0</swagger2.version>
+
+		<spring-cloud.version>2024.0.0</spring-cloud.version>
+		<spring-starter-parent.version>3.4.1</spring-starter-parent.version>
 	</properties>
 
 	<dependencyManagement>
@@ -52,7 +55,7 @@
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-parent</artifactId>
-				<version>2.6.3</version>
+				<version>${spring-starter-parent.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -62,6 +65,21 @@
 				<version>${spring-cloud.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.thoughtworks.xstream</groupId>
+				<artifactId>xstream</artifactId>
+				<version>1.4.21</version>
+			</dependency>
+			<dependency>
+				<groupId>net.minidev</groupId>
+				<artifactId>json-smart</artifactId>
+				<version>2.4.11</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>4.5.14</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

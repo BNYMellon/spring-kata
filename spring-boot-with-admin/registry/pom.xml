@@ -35,7 +35,10 @@
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 
-		<spring-cloud.version>2021.0.0</spring-cloud.version>
+		<spring-cloud.version>2024.0.0</spring-cloud.version>
+		<spring-starter-test.version>3.4.1</spring-starter-test.version>
+		<spring-cloud-starter-server.version>4.2.0</spring-cloud-starter-server.version>
+		<spring-cloud-starter-parent.version>3.4.1</spring-cloud-starter-parent.version>
 	</properties>
 
 	<dependencyManagement>
@@ -43,7 +46,7 @@
             <dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-parent</artifactId>
-				<version>2.6.3</version>
+				<version>${spring-cloud-starter-parent.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -54,6 +57,26 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<dependency>
+				<groupId>com.thoughtworks.xstream</groupId>
+				<artifactId>xstream</artifactId>
+				<version>1.4.21</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>4.5.14</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-core</artifactId>
+				<version>1.5.16</version>
+			</dependency>
+			<dependency>
+				<groupId>net.minidev</groupId>
+				<artifactId>json-smart</artifactId>
+				<version>2.4.11</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -61,10 +84,12 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+			<version>${spring-cloud-starter-server.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<version>${spring-starter-test.version}</version>
 			<scope>test</scope>
 		</dependency>
     </dependencies>
