@@ -15,7 +15,7 @@ jobs:
       matrix:
         # os: [macos-latest, ubuntu-latest, windows-latest]
         os: [ubuntu-latest]
-        java-version: [17, 21, 24]
+        java-version: [17, 21, 25]
 
     runs-on: ${{ matrix.os }}
 
@@ -38,7 +38,7 @@ jobs:
       - name: JDK Version
         run: java --version
       - name: Enable Maven Cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
