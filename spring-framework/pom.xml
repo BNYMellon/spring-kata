@@ -38,21 +38,21 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
 
-        <spring-framework.version>6.0.8</spring-framework.version>
-        <spring-data.jpa>3.0.5</spring-data.jpa>
+        <spring-framework.version>6.2.6</spring-framework.version>
+        <spring-data.jpa>3.4.5</spring-data.jpa>
 
-        <junit5.version>5.9.3</junit5.version>
+        <junit5.version>5.12.2</junit5.version>
 
-        <logback.version>1.4.6</logback.version>
+        <logback.version>1.5.18</logback.version>
 
-        <h2-database.version>2.1.214</h2-database.version>
-        <hibernate.version>6.1.7.Final</hibernate.version>
-        <jcl-over-slf4j.version>2.0.5</jcl-over-slf4j.version>
+        <h2-database.version>2.3.232</h2-database.version>
+        <hibernate.version>6.6.13.Final</hibernate.version>
+        <jcl-over-slf4j.version>2.0.17</jcl-over-slf4j.version>
 
-        <jackson.version>2.4.0</jackson.version>
-        <jaxb-api.version>4.0.0</jaxb-api.version>
+        <jackson.version>2.19.0</jackson.version>
+        <jaxb-api.version>4.0.2</jaxb-api.version>
 
-        <swagger2.version>2.6.0</swagger2.version>
+        <springfox.version>3.0.0</springfox.version>
     </properties>
 
     <modules>
@@ -78,7 +78,7 @@
             <dependency>
                 <groupId>jakarta.persistence</groupId>
                 <artifactId>jakarta.persistence-api</artifactId>
-                <version>3.1.0</version>
+                <version>3.2.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

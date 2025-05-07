@@ -35,18 +35,14 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
 
-        <log4j2.version>2.17.1</log4j2.version>
-        <logback-core.version>1.1.7</logback-core.version>
-        <commons-lang3.version>3.11</commons-lang3.version>
+        <log4j2.version>2.24.3</log4j2.version>
+        <logback-core.version>1.5.18</logback-core.version>
+        <commons-lang3.version>3.17.0</commons-lang3.version>
 
-        <swagger2.version>2.6.0</swagger2.version>
+        <springfox.version>3.0.0</springfox.version>
 
-        <jackson.version>2.21.1</jackson.version>
-
-        <dbunit.version>2.7.0</dbunit.version>
+        <dbunit.version>3.0.0</dbunit.version>
         <spring-test-dbunit.version>1.3.0</spring-test-dbunit.version>
-
-        <rest-assured.version>3.0.3</rest-assured.version>
     </properties>
 
     <dependencyManagement>
@@ -61,7 +57,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-parent</artifactId>
-                <version>2.4.2</version>
+                <version>3.4.5</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -123,17 +119,17 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-core</artifactId>
-            <version>${swagger2.version}</version>
+            <version>${springfox.version}</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>${swagger2.version}</version>
+            <version>${springfox.version}</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>${swagger2.version}</version>
+            <version>${springfox.version}</version>
         </dependency>
 
         <!-- Embedded database -->
@@ -163,12 +159,12 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>4.3.3</version>
+            <version>5.5.1</version>
         </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>json-path</artifactId>
-            <version>4.3.3</version>
+            <version>5.5.1</version>
         </dependency>
 
         <dependency>
@@ -182,7 +178,23 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>2.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>2.2</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
