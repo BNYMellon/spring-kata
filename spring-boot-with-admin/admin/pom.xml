@@ -35,8 +35,8 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
 
-        <spring-boot-admin.version>2.6.7</spring-boot-admin.version>
-        <spring-cloud.version>3.1.2</spring-cloud.version>
+        <spring-boot-admin.version>3.4.5</spring-boot-admin.version>
+        <spring-cloud.version>4.2.1</spring-cloud.version>
     </properties>
 
     <dependencyManagement>
@@ -44,7 +44,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-parent</artifactId>
-                <version>2.6.7</version>
+                <version>3.4.5</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -90,6 +90,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>6.4.5</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>
